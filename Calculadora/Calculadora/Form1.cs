@@ -17,16 +17,16 @@ namespace Calculadora
             InitializeComponent();
         }
 
-        private PilhaHerdaLista<Elemento> pilhaElementos;
-        private PilhaHerdaLista<Elemento> posFixo;
+        private PilhaHerdaLista<char> pilhaElementos;
+        private PilhaHerdaLista<char> posFixo;
         private void btnAbre_Click(object sender, EventArgs e)
         {
-            pilhaElementos = new PilhaHerdaLista<Elemento>();
+            pilhaElementos = new PilhaHerdaLista<char>();
 
             if (Convert.ToChar((sender as Button).Text) != '=')
             {
                 txtResultado.Text += Convert.ToChar((sender as Button).Text);
-                pilhaElementos.Empilhar(new Elemento(Convert.ToChar((sender as Button).Text)));
+                pilhaElementos.Empilhar(Convert.ToChar((sender as Button).Text));
             }
             else
             {
@@ -37,43 +37,48 @@ namespace Calculadora
         public void ConverterParaPosFixa()
         {
             
-            switch(pilhaElementos.OTopo().Ele)
+            switch(pilhaElementos.OTopo().ToString())
             {
-                case '1':
+                case "1":
 
                     break;
-                case '2':
+                case "2":
                     break;
-                case '3':
+                case "3":
                     break;
-                case '4':
+                case "4":
                     break;
-                case '5':
+                case "5":
                     break;
-                case '6':
+                case "6":
                     break;
-                case '7':
+                case "7":
                     break;
-                case '8':
+                case "8":
                     break;
-                case '9':
+                case "9":
                     break;
-                case '0':
+                case "0":
                     break;
-                case '.':
+                case ".":
                     break;
-                case '/':
+                case "/":
                     break;
-                case '*':
+                case "*":
                     break;
-                case '+':
+                case "+":
                     break;
-                case '-':
+                case "-":
                     break;
-                case '^':
+                case "^":
                     break;
 
             }
+        }
+
+        private void frmCal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
