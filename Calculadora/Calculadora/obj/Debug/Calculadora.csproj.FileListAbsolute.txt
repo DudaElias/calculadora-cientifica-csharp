@@ -1,0 +1,10 @@
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\bin\Debug\Calculadora.exe.config
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\bin\Debug\Calculadora.exe
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\bin\Debug\Calculadora.pdb
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csprojAssemblyReference.cache
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.frmCal.resources
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.Properties.Resources.resources
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.GenerateResource.cache
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.CoreCompileInputs.cache
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.exe
+D:\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.pdb

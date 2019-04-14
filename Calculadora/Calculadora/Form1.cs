@@ -23,12 +23,15 @@ namespace Calculadora
         {
             pilhaElementos = new PilhaHerdaLista<Elemento>();
 
-            while (Convert.ToChar((sender as Button).Text) != '=')
+            if (Convert.ToChar((sender as Button).Text) != '=')
             {
+                txtResultado.Text += Convert.ToChar((sender as Button).Text);
                 pilhaElementos.Empilhar(new Elemento(Convert.ToChar((sender as Button).Text)));
             }
-            ConverterParaPosFixa();
-
+            else
+            {
+                ConverterParaPosFixa();
+            }
         }
 
         public void ConverterParaPosFixa()
@@ -37,6 +40,7 @@ namespace Calculadora
             switch(pilhaElementos.OTopo().Ele)
             {
                 case '1':
+
                     break;
                 case '2':
                     break;

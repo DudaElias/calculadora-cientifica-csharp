@@ -57,24 +57,25 @@
             // txtResultado
             // 
             this.txtResultado.BackColor = System.Drawing.Color.IndianRed;
+            this.txtResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResultado.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtResultado.Location = new System.Drawing.Point(30, 50);
+            this.txtResultado.Location = new System.Drawing.Point(43, 37);
             this.txtResultado.Margin = new System.Windows.Forms.Padding(5);
             this.txtResultado.Multiline = true;
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(607, 94);
+            this.txtResultado.Size = new System.Drawing.Size(533, 94);
             this.txtResultado.TabIndex = 0;
             // 
             // btn0
             // 
             this.btn0.BackColor = System.Drawing.Color.IndianRed;
-            this.btn0.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn0.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn0.Location = new System.Drawing.Point(30, 654);
+            this.btn0.Location = new System.Drawing.Point(31, 654);
             this.btn0.Margin = new System.Windows.Forms.Padding(5);
             this.btn0.Name = "btn0";
-            this.btn0.Size = new System.Drawing.Size(232, 81);
+            this.btn0.Size = new System.Drawing.Size(200, 81);
             this.btn0.TabIndex = 1;
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = false;
@@ -83,7 +84,7 @@
             // btn7
             // 
             this.btn7.BackColor = System.Drawing.Color.IndianRed;
-            this.btn7.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn7.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn7.Location = new System.Drawing.Point(30, 317);
             this.btn7.Margin = new System.Windows.Forms.Padding(5);
@@ -97,7 +98,7 @@
             // btn4
             // 
             this.btn4.BackColor = System.Drawing.Color.IndianRed;
-            this.btn4.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn4.Location = new System.Drawing.Point(30, 433);
             this.btn4.Margin = new System.Windows.Forms.Padding(5);
@@ -111,9 +112,9 @@
             // btn8
             // 
             this.btn8.BackColor = System.Drawing.Color.IndianRed;
-            this.btn8.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn8.Location = new System.Drawing.Point(178, 317);
+            this.btn8.Location = new System.Drawing.Point(148, 317);
             this.btn8.Margin = new System.Windows.Forms.Padding(5);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(83, 81);
@@ -125,9 +126,9 @@
             // btn2
             // 
             this.btn2.BackColor = System.Drawing.Color.IndianRed;
-            this.btn2.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn2.Location = new System.Drawing.Point(178, 546);
+            this.btn2.Location = new System.Drawing.Point(148, 547);
             this.btn2.Margin = new System.Windows.Forms.Padding(5);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(83, 81);
@@ -139,9 +140,9 @@
             // btn5
             // 
             this.btn5.BackColor = System.Drawing.Color.IndianRed;
-            this.btn5.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn5.Location = new System.Drawing.Point(178, 433);
+            this.btn5.Location = new System.Drawing.Point(148, 433);
             this.btn5.Margin = new System.Windows.Forms.Padding(5);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(83, 81);
@@ -153,9 +154,9 @@
             // btn9
             // 
             this.btn9.BackColor = System.Drawing.Color.IndianRed;
-            this.btn9.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn9.Location = new System.Drawing.Point(312, 317);
+            this.btn9.Location = new System.Drawing.Point(266, 317);
             this.btn9.Margin = new System.Windows.Forms.Padding(5);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(83, 81);
@@ -167,9 +168,9 @@
             // btnPonto
             // 
             this.btnPonto.BackColor = System.Drawing.Color.IndianRed;
-            this.btnPonto.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPonto.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPonto.Location = new System.Drawing.Point(312, 654);
+            this.btnPonto.Location = new System.Drawing.Point(266, 654);
             this.btnPonto.Margin = new System.Windows.Forms.Padding(5);
             this.btnPonto.Name = "btnPonto";
             this.btnPonto.Size = new System.Drawing.Size(83, 81);
@@ -181,7 +182,7 @@
             // btn1
             // 
             this.btn1.BackColor = System.Drawing.Color.IndianRed;
-            this.btn1.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn1.Location = new System.Drawing.Point(30, 546);
             this.btn1.Margin = new System.Windows.Forms.Padding(5);
@@ -195,9 +196,9 @@
             // btn6
             // 
             this.btn6.BackColor = System.Drawing.Color.IndianRed;
-            this.btn6.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn6.Location = new System.Drawing.Point(312, 433);
+            this.btn6.Location = new System.Drawing.Point(266, 433);
             this.btn6.Margin = new System.Windows.Forms.Padding(5);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(83, 81);
@@ -209,9 +210,9 @@
             // btn3
             // 
             this.btn3.BackColor = System.Drawing.Color.IndianRed;
-            this.btn3.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn3.Location = new System.Drawing.Point(312, 544);
+            this.btn3.Location = new System.Drawing.Point(266, 546);
             this.btn3.Margin = new System.Windows.Forms.Padding(5);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(83, 81);
@@ -223,9 +224,9 @@
             // btnIgual
             // 
             this.btnIgual.BackColor = System.Drawing.Color.IndianRed;
-            this.btnIgual.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIgual.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIgual.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIgual.Location = new System.Drawing.Point(565, 546);
+            this.btnIgual.Location = new System.Drawing.Point(502, 546);
             this.btnIgual.Margin = new System.Windows.Forms.Padding(5);
             this.btnIgual.Name = "btnIgual";
             this.btnIgual.Size = new System.Drawing.Size(83, 189);
@@ -236,9 +237,9 @@
             // btnMais
             // 
             this.btnMais.BackColor = System.Drawing.Color.IndianRed;
-            this.btnMais.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMais.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMais.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMais.Location = new System.Drawing.Point(433, 317);
+            this.btnMais.Location = new System.Drawing.Point(384, 317);
             this.btnMais.Margin = new System.Windows.Forms.Padding(5);
             this.btnMais.Name = "btnMais";
             this.btnMais.Size = new System.Drawing.Size(83, 81);
@@ -250,9 +251,9 @@
             // btnMenos
             // 
             this.btnMenos.BackColor = System.Drawing.Color.IndianRed;
-            this.btnMenos.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenos.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMenos.Location = new System.Drawing.Point(433, 433);
+            this.btnMenos.Location = new System.Drawing.Point(384, 433);
             this.btnMenos.Margin = new System.Windows.Forms.Padding(5);
             this.btnMenos.Name = "btnMenos";
             this.btnMenos.Size = new System.Drawing.Size(83, 81);
@@ -264,9 +265,9 @@
             // btnVezes
             // 
             this.btnVezes.BackColor = System.Drawing.Color.IndianRed;
-            this.btnVezes.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVezes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVezes.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVezes.Location = new System.Drawing.Point(565, 433);
+            this.btnVezes.Location = new System.Drawing.Point(502, 433);
             this.btnVezes.Margin = new System.Windows.Forms.Padding(5);
             this.btnVezes.Name = "btnVezes";
             this.btnVezes.Size = new System.Drawing.Size(83, 81);
@@ -278,9 +279,9 @@
             // btnDividir
             // 
             this.btnDividir.BackColor = System.Drawing.Color.IndianRed;
-            this.btnDividir.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDividir.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDividir.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDividir.Location = new System.Drawing.Point(565, 317);
+            this.btnDividir.Location = new System.Drawing.Point(502, 317);
             this.btnDividir.Margin = new System.Windows.Forms.Padding(5);
             this.btnDividir.Name = "btnDividir";
             this.btnDividir.Size = new System.Drawing.Size(83, 81);
@@ -292,9 +293,9 @@
             // btnElevado
             // 
             this.btnElevado.BackColor = System.Drawing.Color.IndianRed;
-            this.btnElevado.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElevado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnElevado.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnElevado.Location = new System.Drawing.Point(433, 548);
+            this.btnElevado.Location = new System.Drawing.Point(384, 549);
             this.btnElevado.Margin = new System.Windows.Forms.Padding(5);
             this.btnElevado.Name = "btnElevado";
             this.btnElevado.Size = new System.Drawing.Size(83, 79);
@@ -307,11 +308,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Merienda", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(26, 178);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 34);
+            this.label1.Size = new System.Drawing.Size(112, 29);
             this.label1.TabIndex = 18;
             this.label1.Text = "Pós Fixa:";
             // 
@@ -326,9 +327,9 @@
             // btnAlternar
             // 
             this.btnAlternar.BackColor = System.Drawing.Color.IndianRed;
-            this.btnAlternar.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlternar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlternar.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAlternar.Location = new System.Drawing.Point(433, 654);
+            this.btnAlternar.Location = new System.Drawing.Point(384, 654);
             this.btnAlternar.Name = "btnAlternar";
             this.btnAlternar.Size = new System.Drawing.Size(83, 81);
             this.btnAlternar.TabIndex = 20;
@@ -339,9 +340,9 @@
             // btnAbre
             // 
             this.btnAbre.BackColor = System.Drawing.Color.IndianRed;
-            this.btnAbre.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbre.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbre.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAbre.Location = new System.Drawing.Point(433, 211);
+            this.btnAbre.Location = new System.Drawing.Point(384, 211);
             this.btnAbre.Name = "btnAbre";
             this.btnAbre.Size = new System.Drawing.Size(83, 81);
             this.btnAbre.TabIndex = 21;
@@ -352,9 +353,9 @@
             // btnFecha
             // 
             this.btnFecha.BackColor = System.Drawing.Color.IndianRed;
-            this.btnFecha.Font = new System.Drawing.Font("Merienda", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFecha.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFecha.Location = new System.Drawing.Point(565, 211);
+            this.btnFecha.Location = new System.Drawing.Point(502, 211);
             this.btnFecha.Name = "btnFecha";
             this.btnFecha.Size = new System.Drawing.Size(83, 81);
             this.btnFecha.TabIndex = 22;
@@ -368,7 +369,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(668, 775);
+            this.ClientSize = new System.Drawing.Size(614, 775);
             this.Controls.Add(this.btnFecha);
             this.Controls.Add(this.btnAbre);
             this.Controls.Add(this.btnAlternar);
