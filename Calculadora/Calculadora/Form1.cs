@@ -37,7 +37,7 @@ namespace Calculadora
                 else
                 {
                     txtResultado.Text += Convert.ToChar((sender as Button).Text);
-                    Elemento ele = new Elemento(Convert.ToChar((sender as Button).Text),DecidirPreferencia((sender as Button).Text));
+                    Elemento ele = new Elemento(Convert.ToChar((sender as Button).Text), DecidirPreferencia((sender as Button).Text));
                     pilhaElementos[qtd] = ele;
                     qtd++;
                 }
@@ -51,8 +51,8 @@ namespace Calculadora
 
         public int DecidirPreferencia(string e)
         {
-            
-            switch(e)
+
+            switch (e)
             {
                 case "1":
                     return 4;
@@ -101,45 +101,44 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            int qtdNum = 0;
-            for(int i = 0;  qtd != 0; i++)
+            int operandos = 0;
+            for(int i = 0; i < qtd; i++)
             {
-                if (pilhaElementos[i].Prefe == 4 && qtdNum != 2) // se é número
+                if(pilhaElementos[i].Prefe == 4)
                 {
                     posFixo.Empilhar(pilhaElementos[i].Ele);
                     pilhaElementos[i] = null;
-                    qtdNum++;
-                    qtd--;
+                    operandos++;
                 }
-                else if(qtdNum != 2) // caso não tenha dois números ainda
+                else if(operandos == 2)
                 {
-                    elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                    pilhaElementos[i] = null;
-                    qtd--;
-                }
-                else if(DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())) > pilhaElementos[i].Prefe)
-                {
-                    if (qtdNum == 2)
-                    {
-                        posFixo.Empilhar(pilhaElementos[i].Ele);
-                        pilhaElementos[i] = null;
-                        qtd--;
-                        qtdNum = 0;
-                    }
-                }
-                else if(DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())) <= pilhaElementos[i].Prefe)
-                {
-                    if(qtdNum == 2)
+                    // adiciona operação
+                    if(pilhaElementos[i].Prefe > DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                     {
                         posFixo.Empilhar(elementosAEspera.OTopo());
-                        qtd--;
+                        elementosAEspera.Desempilhar();
+                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                        operandos = 0;
+                    }
+                    else
+                    {
+                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                        operandos = 0;
                     }
                 }
+                else
+                {
+                    // coloca operação em espera
+                    elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                }
+
             }
-            if(!elementosAEspera.EstaVazia())
+            if (!elementosAEspera.EstaVazia())
             {
-                elementosAEspera.Atual = elementosAEspera.Primeiro;
-                while(!elementosAEspera.EstaVazia())
+
+                elementosAEspera.Inverter();
+                elementosAEspera.Atual = elementosAEspera.Atual;
+                while (!elementosAEspera.EstaVazia())
                 {
                     posFixo.Empilhar(elementosAEspera.Atual.Info);
                     elementosAEspera.Desempilhar();
@@ -147,11 +146,12 @@ namespace Calculadora
             }
             posFixo.Inverter();
             posFixo.Atual = posFixo.Primeiro;
-            for (int i = 1; i <= posFixo.Tamanho(); i++ )
+            for (int i = 1; i <= posFixo.Tamanho(); i++)
             {
                 lblPos.Text += posFixo.Atual.Info;
                 posFixo.Atual = posFixo.Atual.Prox;
             }
+
         }
     }
 }
