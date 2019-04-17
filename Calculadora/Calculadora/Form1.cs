@@ -55,35 +55,35 @@ namespace Calculadora
             switch (e)
             {
                 case "1":
-                    return 4;
-                case "2":
-                    return 4;
-                case "3":
-                    return 4;
-                case "4":
-                    return 4;
-                case "5":
-                    return 4;
-                case "6":
-                    return 4;
-                case "7":
-                    return 4;
-                case "8":
-                    return 4;
-                case "9":
-                    return 4;
-                case "0":
-                    return 4;
-                case "/":
-                    return 2;
-                case "*":
-                    return 2;
-                case "+":
-                    return 3;
-                case "-":
-                    return 3;
-                case "^":
                     return 1;
+                case "2":
+                    return 1;
+                case "3":
+                    return 1;
+                case "4":
+                    return 1;
+                case "5":
+                    return 1;
+                case "6":
+                    return 1;
+                case "7":
+                    return 1;
+                case "8":
+                    return 1;
+                case "9":
+                    return 1;
+                case "0":
+                    return 1;
+                case "/":
+                    return 3;
+                case "*":
+                    return 3;
+                case "+":
+                    return 2;
+                case "-":
+                    return 2;
+                case "^":
+                    return 4;
 
             }
             return 0;
@@ -104,7 +104,7 @@ namespace Calculadora
             int operandos = 0;
             for(int i = 0; i < qtd; i++)
             {
-                if(pilhaElementos[i].Prefe == 4)
+                if(pilhaElementos[i].Prefe == 1)
                 {
                     posFixo.Empilhar(pilhaElementos[i].Ele);
                     pilhaElementos[i] = null;
@@ -113,7 +113,7 @@ namespace Calculadora
                 else if(operandos == 2)
                 {
                     // adiciona operação
-                    if(pilhaElementos[i].Prefe > DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                    if(pilhaElementos[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                     {
                         posFixo.Empilhar(elementosAEspera.OTopo());
                         elementosAEspera.Desempilhar();
@@ -128,19 +128,24 @@ namespace Calculadora
                 }
                 else
                 {
+                    if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                    {
+                        char x = elementosAEspera.OTopo();
+                        elementosAEspera.Desempilhar();
+                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                        elementosAEspera.Empilhar(x);
+                    }
+                    else
+                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
                     // coloca operação em espera
-                    elementosAEspera.Empilhar(pilhaElementos[i].Ele);
                 }
 
             }
             if (!elementosAEspera.EstaVazia())
             {
-
-                elementosAEspera.Inverter();
-                elementosAEspera.Atual = elementosAEspera.Atual;
                 while (!elementosAEspera.EstaVazia())
                 {
-                    posFixo.Empilhar(elementosAEspera.Atual.Info);
+                    posFixo.Empilhar(elementosAEspera.OTopo());
                     elementosAEspera.Desempilhar();
                 }
             }
