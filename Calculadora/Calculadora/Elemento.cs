@@ -8,13 +8,13 @@ namespace Calculadora
 {
     class Elemento : IComparable<Elemento>
     {
-        private char ele;
+        private string ele;
         private int prefe;
 
-        public char Ele { get => ele; set => ele = value; }
+        public string Ele { get => ele; set => ele = value; }
         public int Prefe { get => prefe; set => prefe = value; }
 
-        public Elemento(char el, int i)
+        public Elemento(string el, int i)
         {
             Ele = el;
             Prefe = i;

@@ -16,28 +16,38 @@ namespace Calculadora
         {
             InitializeComponent();
             pilhaElementos = new Elemento[20];
-            posFixo = new PilhaHerdaLista<char>();
-            elementosAEspera = new PilhaHerdaLista<char>();
+            posFixo = new PilhaHerdaLista<string>();
+            elementosAEspera = new PilhaHerdaLista<string>();
         }
 
         private Elemento[] pilhaElementos;
-        private PilhaHerdaLista<char> posFixo;
-        private PilhaHerdaLista<char> elementosAEspera;
+        private PilhaHerdaLista<string> posFixo;
+        private PilhaHerdaLista<string> elementosAEspera;
         private int qtd = 0;
         private void btnAbre_Click(object sender, EventArgs e)
         {
 
-            if (Convert.ToChar((sender as Button).Text) != '=')
+            if ((sender as Button).Text != "=")
             {
-                if (Convert.ToChar((sender as Button).Text) == 'C')
+                if ((sender as Button).Text == "CE")
                 {
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
                     pilhaElementos[qtd] = null;
+                    qtd--;
+                }
+                else if((sender as Button).Text == "C")
+                {
+                    txtResultado.Text = "";
+                    for(int i = 0; i <= qtd; i++)
+                    {
+                        pilhaElementos[i] = null;
+                        qtd--;
+                    }
                 }
                 else
                 {
-                    txtResultado.Text += Convert.ToChar((sender as Button).Text);
-                    Elemento ele = new Elemento(Convert.ToChar((sender as Button).Text), DecidirPreferencia((sender as Button).Text));
+                    txtResultado.Text += (sender as Button).Text;
+                    Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
                     pilhaElementos[qtd] = ele;
                     qtd++;
                 }
@@ -75,15 +85,19 @@ namespace Calculadora
                 case "0":
                     return 1;
                 case "/":
-                    return 3;
-                case "*":
-                    return 3;
-                case "+":
-                    return 2;
-                case "-":
-                    return 2;
-                case "^":
                     return 4;
+                case "*":
+                    return 4;
+                case "+":
+                    return 3;
+                case "-":
+                    return 3;
+                case "^":
+                    return 5;
+                case "(":
+                    return 2;
+                case ")":
+                    return 2;
 
             }
             return 0;
@@ -91,53 +105,110 @@ namespace Calculadora
 
         public void ConverterParaPosFixa()
         {
-
-        }
-
-        private void frmCal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnIgual_Click(object sender, EventArgs e)
-        {
             int operandos = 0;
-            for(int i = 0; i < qtd; i++)
+            int qtdInfos = qtd;
+            for (int i = 0; i < qtdInfos; i++)
             {
-                if(pilhaElementos[i].Prefe == 1)
+                if (pilhaElementos[i].Prefe == 2 && pilhaElementos[i].Ele == "(")
+                {
+                    int j = i;
+                    while (pilhaElementos[j] != null && pilhaElementos[j].Ele != ")")
+                    {
+                        if (pilhaElementos[j].Prefe == 1)
+                        {
+                            posFixo.Empilhar(pilhaElementos[j].Ele);
+                            pilhaElementos[j] = null;
+                            operandos++;
+                        }
+                        else if (operandos == 2)
+                        {
+                            // adiciona operação
+
+                            if (pilhaElementos[j].Ele != "(" && pilhaElementos[j].Ele != ")")
+                            {
+                                if (pilhaElementos[j].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                                {
+                                    posFixo.Empilhar(elementosAEspera.OTopo());
+                                    elementosAEspera.Desempilhar();
+                                    elementosAEspera.Empilhar(pilhaElementos[j].Ele);
+                                    operandos = 0;
+                                }
+                                else
+                                {
+                                    elementosAEspera.Empilhar(pilhaElementos[j].Ele);
+                                    operandos = 0;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // coloca operação em espera
+                            if (!elementosAEspera.EstaVazia() && pilhaElementos[j].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                            {
+                                string x = elementosAEspera.OTopo();
+                                elementosAEspera.Desempilhar();
+                                elementosAEspera.Empilhar(pilhaElementos[j].Ele);
+                                elementosAEspera.Empilhar(x);
+                            }
+                            else
+                                elementosAEspera.Empilhar(pilhaElementos[j].Ele);
+                        }
+
+
+                        j++;
+                    }
+                    if (!elementosAEspera.EstaVazia())
+                    {
+                        while (!elementosAEspera.EstaVazia())
+                        {
+
+                            if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
+                            {
+                                posFixo.Empilhar(elementosAEspera.OTopo());
+                            }
+                            elementosAEspera.Desempilhar();
+                        }
+                    }
+                    i = j;
+                }
+                if (pilhaElementos[i].Prefe == 1)
                 {
                     posFixo.Empilhar(pilhaElementos[i].Ele);
                     pilhaElementos[i] = null;
                     operandos++;
                 }
-                else if(operandos == 2)
+                else if (operandos == 2)
                 {
                     // adiciona operação
-                    if(pilhaElementos[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+
+                    if (pilhaElementos[i].Ele != "(" && pilhaElementos[i].Ele != ")")
                     {
-                        posFixo.Empilhar(elementosAEspera.OTopo());
-                        elementosAEspera.Desempilhar();
-                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                        operandos = 0;
-                    }
-                    else
-                    {
-                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                        operandos = 0;
+                        if (pilhaElementos[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                        {
+                            posFixo.Empilhar(elementosAEspera.OTopo());
+                            elementosAEspera.Desempilhar();
+                            elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                            operandos = 0;
+                        }
+                        else
+                        {
+                            elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                            operandos = 0;
+                        }
                     }
                 }
                 else
                 {
-                    if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
-                    {
-                        char x = elementosAEspera.OTopo();
-                        elementosAEspera.Desempilhar();
-                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                        elementosAEspera.Empilhar(x);
-                    }
-                    else
-                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
                     // coloca operação em espera
+                        if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                        {
+                            string x = elementosAEspera.OTopo();
+                            elementosAEspera.Desempilhar();
+                            elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                            elementosAEspera.Empilhar(x);
+                        }
+                        else
+                            elementosAEspera.Empilhar(pilhaElementos[i].Ele);
                 }
 
             }
@@ -145,7 +216,11 @@ namespace Calculadora
             {
                 while (!elementosAEspera.EstaVazia())
                 {
-                    posFixo.Empilhar(elementosAEspera.OTopo());
+
+                    if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
+                    {
+                        posFixo.Empilhar(elementosAEspera.OTopo());
+                    }
                     elementosAEspera.Desempilhar();
                 }
             }
@@ -157,6 +232,61 @@ namespace Calculadora
                 posFixo.Atual = posFixo.Atual.Prox;
             }
 
+        }
+
+        private void frmCal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIgual_Click(object sender, EventArgs e)
+        {
+            ConverterParaPosFixa();
+            Calcular();
+        }
+
+        public void Calcular()
+        {
+            PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
+            double resultado = 0;
+            for(int i = 0; !posFixo.EstaVazia(); i++)
+            {
+                if (DecidirPreferencia(posFixo.OTopo()) == 1)
+                {
+                    result.Empilhar(posFixo.OTopo());
+                    posFixo.Desempilhar();
+                }
+                else
+                {
+                    double operando2 = Convert.ToDouble(result.OTopo());
+                    result.Desempilhar();
+                    double operando1 = Convert.ToDouble(result.OTopo());
+                    result.Desempilhar();
+                    char operador = Convert.ToChar(posFixo.OTopo());
+                    posFixo.Desempilhar();
+                    switch(operador)
+                    {
+                        case '+':
+                            resultado = operando1 + operando2;
+                            break;
+                        case '-':
+                            resultado = operando1 - operando2;
+                            break;
+                        case '*':
+                            resultado = operando1 * operando2;
+                            break;
+                        case '/':
+                            resultado = operando1 / operando2;
+                            break;
+                        case '^':
+                            resultado = Math.Pow(operando1, operando2);
+                            break;
+                    }
+                    result.Empilhar(Convert.ToString(resultado));
+                }
+            }
+
+            txtResult.Text = Convert.ToString(result.OTopo());
         }
     }
 }
