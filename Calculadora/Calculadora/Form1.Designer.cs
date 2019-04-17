@@ -57,7 +57,7 @@
             // txtResultado
             // 
             this.txtResultado.BackColor = System.Drawing.Color.IndianRed;
-            this.txtResultado.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResultado.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtResultado.Location = new System.Drawing.Point(48, 39);
             this.txtResultado.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -309,20 +309,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(29, 187);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 30);
+            this.label1.Size = new System.Drawing.Size(112, 29);
             this.label1.TabIndex = 18;
             this.label1.Text = "Pós Fixa:";
             // 
             // lblPos
             // 
             this.lblPos.AutoSize = true;
+            this.lblPos.BackColor = System.Drawing.Color.Transparent;
             this.lblPos.Location = new System.Drawing.Point(29, 222);
             this.lblPos.Name = "lblPos";
-            this.lblPos.Size = new System.Drawing.Size(0, 21);
+            this.lblPos.Size = new System.Drawing.Size(0, 20);
             this.lblPos.TabIndex = 19;
             // 
             // btnAbre
@@ -367,7 +368,7 @@
             // 
             // frmCal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -395,7 +396,7 @@
             this.Controls.Add(this.btn7);
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.txtResultado);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "frmCal";
             this.Text = "Calculadora";
