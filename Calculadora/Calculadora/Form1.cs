@@ -24,6 +24,7 @@ namespace Calculadora
         private PilhaHerdaLista<string> posFixo;
         private PilhaHerdaLista<string> elementosAEspera;
         private int qtd = 0;
+        private Elemento anterior;
         private void btnAbre_Click(object sender, EventArgs e)
         {
 
@@ -48,8 +49,14 @@ namespace Calculadora
                 {
                     txtResultado.Text += (sender as Button).Text;
                     Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
-                    pilhaElementos[qtd] = ele;
-                    qtd++;
+                    if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
+                        pilhaElementos[qtd - 1].Ele += ele.Ele;
+                    else
+                    {
+                        pilhaElementos[qtd] = ele;
+                        qtd++;
+                    }
+                        
                 }
 
             }
@@ -64,7 +71,7 @@ namespace Calculadora
 
             switch (e)
             {
-                case "1":
+                /*case "1":
                     return 1;
                 case "2":
                     return 1;
@@ -83,7 +90,7 @@ namespace Calculadora
                 case "9":
                     return 1;
                 case "0":
-                    return 1;
+                    return 1;*/
                 case "/":
                     return 4;
                 case "*":
@@ -100,7 +107,18 @@ namespace Calculadora
                     return 2;
 
             }
-            return 0;
+
+            try
+            {
+                double eDouble = Convert.ToDouble(e);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+
+           
         }
 
         public void ConverterParaPosFixa()

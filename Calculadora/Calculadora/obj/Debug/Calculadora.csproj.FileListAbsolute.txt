@@ -18,3 +18,13 @@ C:\Users\u18190\Documents\GitHub\calculadora-cientifica-csharp\Calculadora\Calcu
 C:\Users\u18190\Documents\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.CoreCompileInputs.cache
 C:\Users\u18190\Documents\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.exe
 C:\Users\u18190\Documents\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.pdb
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\bin\Debug\Calculadora.exe.config
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\bin\Debug\Calculadora.exe
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\bin\Debug\Calculadora.pdb
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csprojAssemblyReference.cache
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.frmCal.resources
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.Properties.Resources.resources
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.GenerateResource.cache
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.CoreCompileInputs.cache
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.exe
+C:\Users\kaika\OneDrive\Documentos\GitHub\calculadora-cientifica-csharp\Calculadora\Calculadora\obj\Debug\Calculadora.pdb
