@@ -24,12 +24,9 @@ namespace Calculadora
         private PilhaHerdaLista<string> posFixo;
         private PilhaHerdaLista<string> elementosAEspera;
         private int qtd = 0;
-        private Elemento anterior;
+
         private void btnAbre_Click(object sender, EventArgs e)
         {
-
-            if ((sender as Button).Text != "=")
-            {
                 if ((sender as Button).Text == "CE")
                 {
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
@@ -49,21 +46,29 @@ namespace Calculadora
                 {
                     txtResultado.Text += (sender as Button).Text;
                     Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
+                    
                     if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
                         pilhaElementos[qtd - 1].Ele += ele.Ele;
+                    else if(qtd != 0 && pilhaElementos[0].Prefe == 3 && ele.Prefe == 1)
+                    {
+                        if (pilhaElementos[0].Ele == "-")
+                        {
+                            pilhaElementos[0].Ele = "-" + ele.Ele;
+                            pilhaElementos[0].Prefe = 1;
+                        }
+                        else
+                        {
+                            pilhaElementos[qtd] = ele;
+                            qtd++;
+                        }
+                    }
                     else
                     {
                         pilhaElementos[qtd] = ele;
                         qtd++;
                     }
-                        
-                }
 
-            }
-            else
-            {
-                ConverterParaPosFixa();
-            }
+                }
         }
 
         public int DecidirPreferencia(string e)
@@ -110,7 +115,7 @@ namespace Calculadora
 
             try
             {
-                double eDouble = Convert.ToDouble(e);
+                //double eDouble = Convert.ToDouble(e);
                 return 1;
             }
             catch
@@ -149,12 +154,12 @@ namespace Calculadora
                                     posFixo.Empilhar(elementosAEspera.OTopo());
                                     elementosAEspera.Desempilhar();
                                     elementosAEspera.Empilhar(pilhaElementos[j].Ele);
-                                    operandos = 0;
+                                    operandos = 1;
                                 }
                                 else
                                 {
                                     elementosAEspera.Empilhar(pilhaElementos[j].Ele);
-                                    operandos = 0;
+                                    operandos = 1;
                                 }
                             }
                         }
@@ -201,7 +206,7 @@ namespace Calculadora
 
                     if (pilhaElementos[i].Ele != "(" && pilhaElementos[i].Ele != ")")
                     {
-                        if (pilhaElementos[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                        if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                         {
                             posFixo.Empilhar(elementosAEspera.OTopo());
                             elementosAEspera.Desempilhar();
@@ -246,7 +251,7 @@ namespace Calculadora
             posFixo.Atual = posFixo.Primeiro;
             for (int i = 1; i <= posFixo.Tamanho(); i++)
             {
-                lblPos.Text += posFixo.Atual.Info;
+                lblPos.Text += posFixo.Atual.Info + " ";
                 posFixo.Atual = posFixo.Atual.Prox;
             }
 
@@ -282,7 +287,7 @@ namespace Calculadora
                     result.Desempilhar();
                     char operador = Convert.ToChar(posFixo.OTopo());
                     posFixo.Desempilhar();
-                    switch(operador)
+                    switch (operador)
                     {
                         case '+':
                             resultado = operando1 + operando2;

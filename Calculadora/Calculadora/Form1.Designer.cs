@@ -76,7 +76,7 @@
             this.btn0.BackColor = System.Drawing.Color.IndianRed;
             this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn0.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn0.Location = new System.Drawing.Point(34, 687);
+            this.btn0.Location = new System.Drawing.Point(123, 696);
             this.btn0.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(222, 85);
@@ -90,7 +90,7 @@
             this.btn7.BackColor = System.Drawing.Color.IndianRed;
             this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn7.Location = new System.Drawing.Point(33, 333);
+            this.btn7.Location = new System.Drawing.Point(122, 342);
             this.btn7.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(92, 85);
@@ -104,7 +104,7 @@
             this.btn4.BackColor = System.Drawing.Color.IndianRed;
             this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn4.Location = new System.Drawing.Point(33, 455);
+            this.btn4.Location = new System.Drawing.Point(122, 464);
             this.btn4.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(92, 85);
@@ -118,7 +118,7 @@
             this.btn8.BackColor = System.Drawing.Color.IndianRed;
             this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn8.Location = new System.Drawing.Point(164, 333);
+            this.btn8.Location = new System.Drawing.Point(253, 342);
             this.btn8.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(92, 85);
@@ -132,7 +132,7 @@
             this.btn2.BackColor = System.Drawing.Color.IndianRed;
             this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn2.Location = new System.Drawing.Point(164, 574);
+            this.btn2.Location = new System.Drawing.Point(253, 583);
             this.btn2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(92, 85);
@@ -146,7 +146,7 @@
             this.btn5.BackColor = System.Drawing.Color.IndianRed;
             this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn5.Location = new System.Drawing.Point(164, 455);
+            this.btn5.Location = new System.Drawing.Point(253, 464);
             this.btn5.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(92, 85);
@@ -160,7 +160,7 @@
             this.btn9.BackColor = System.Drawing.Color.IndianRed;
             this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn9.Location = new System.Drawing.Point(296, 333);
+            this.btn9.Location = new System.Drawing.Point(385, 342);
             this.btn9.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(92, 85);
@@ -174,7 +174,7 @@
             this.btnPonto.BackColor = System.Drawing.Color.IndianRed;
             this.btnPonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPonto.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPonto.Location = new System.Drawing.Point(296, 687);
+            this.btnPonto.Location = new System.Drawing.Point(385, 696);
             this.btnPonto.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnPonto.Name = "btnPonto";
             this.btnPonto.Size = new System.Drawing.Size(92, 85);
@@ -188,7 +188,7 @@
             this.btn1.BackColor = System.Drawing.Color.IndianRed;
             this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn1.Location = new System.Drawing.Point(33, 573);
+            this.btn1.Location = new System.Drawing.Point(122, 582);
             this.btn1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(92, 85);
@@ -202,7 +202,7 @@
             this.btn6.BackColor = System.Drawing.Color.IndianRed;
             this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn6.Location = new System.Drawing.Point(296, 455);
+            this.btn6.Location = new System.Drawing.Point(385, 464);
             this.btn6.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(92, 85);
@@ -216,7 +216,7 @@
             this.btn3.BackColor = System.Drawing.Color.IndianRed;
             this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn3.Location = new System.Drawing.Point(296, 573);
+            this.btn3.Location = new System.Drawing.Point(385, 582);
             this.btn3.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(92, 85);
@@ -230,7 +230,7 @@
             this.btnIgual.BackColor = System.Drawing.Color.IndianRed;
             this.btnIgual.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIgual.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIgual.Location = new System.Drawing.Point(548, 576);
+            this.btnIgual.Location = new System.Drawing.Point(637, 585);
             this.btnIgual.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnIgual.Name = "btnIgual";
             this.btnIgual.Size = new System.Drawing.Size(92, 196);
@@ -244,7 +244,7 @@
             this.btnMais.BackColor = System.Drawing.Color.IndianRed;
             this.btnMais.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMais.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMais.Location = new System.Drawing.Point(427, 333);
+            this.btnMais.Location = new System.Drawing.Point(516, 342);
             this.btnMais.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnMais.Name = "btnMais";
             this.btnMais.Size = new System.Drawing.Size(92, 85);
@@ -258,7 +258,7 @@
             this.btnMenos.BackColor = System.Drawing.Color.IndianRed;
             this.btnMenos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenos.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMenos.Location = new System.Drawing.Point(427, 455);
+            this.btnMenos.Location = new System.Drawing.Point(516, 464);
             this.btnMenos.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnMenos.Name = "btnMenos";
             this.btnMenos.Size = new System.Drawing.Size(92, 85);
@@ -272,7 +272,7 @@
             this.btnVezes.BackColor = System.Drawing.Color.IndianRed;
             this.btnVezes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVezes.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVezes.Location = new System.Drawing.Point(548, 455);
+            this.btnVezes.Location = new System.Drawing.Point(637, 464);
             this.btnVezes.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnVezes.Name = "btnVezes";
             this.btnVezes.Size = new System.Drawing.Size(92, 85);
@@ -286,7 +286,7 @@
             this.btnDividir.BackColor = System.Drawing.Color.IndianRed;
             this.btnDividir.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDividir.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDividir.Location = new System.Drawing.Point(548, 333);
+            this.btnDividir.Location = new System.Drawing.Point(637, 342);
             this.btnDividir.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnDividir.Name = "btnDividir";
             this.btnDividir.Size = new System.Drawing.Size(92, 85);
@@ -300,7 +300,7 @@
             this.btnElevado.BackColor = System.Drawing.Color.IndianRed;
             this.btnElevado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnElevado.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnElevado.Location = new System.Drawing.Point(427, 576);
+            this.btnElevado.Location = new System.Drawing.Point(516, 585);
             this.btnElevado.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnElevado.Name = "btnElevado";
             this.btnElevado.Size = new System.Drawing.Size(92, 83);
@@ -337,7 +337,7 @@
             this.btnAbre.BackColor = System.Drawing.Color.IndianRed;
             this.btnAbre.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbre.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAbre.Location = new System.Drawing.Point(427, 222);
+            this.btnAbre.Location = new System.Drawing.Point(516, 231);
             this.btnAbre.Name = "btnAbre";
             this.btnAbre.Size = new System.Drawing.Size(92, 85);
             this.btnAbre.TabIndex = 21;
@@ -350,7 +350,7 @@
             this.btnFecha.BackColor = System.Drawing.Color.IndianRed;
             this.btnFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFecha.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFecha.Location = new System.Drawing.Point(548, 222);
+            this.btnFecha.Location = new System.Drawing.Point(637, 231);
             this.btnFecha.Name = "btnFecha";
             this.btnFecha.Size = new System.Drawing.Size(92, 85);
             this.btnFecha.TabIndex = 22;
@@ -363,7 +363,7 @@
             this.btnApagar.BackColor = System.Drawing.Color.IndianRed;
             this.btnApagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApagar.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnApagar.Location = new System.Drawing.Point(427, 687);
+            this.btnApagar.Location = new System.Drawing.Point(516, 696);
             this.btnApagar.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.btnApagar.Name = "btnApagar";
             this.btnApagar.Size = new System.Drawing.Size(92, 85);
@@ -377,7 +377,7 @@
             this.button1.BackColor = System.Drawing.Color.IndianRed;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Location = new System.Drawing.Point(296, 222);
+            this.button1.Location = new System.Drawing.Point(385, 231);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 85);
             this.button1.TabIndex = 24;
@@ -428,7 +428,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(682, 814);
+            this.ClientSize = new System.Drawing.Size(771, 814);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtResult);
