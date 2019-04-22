@@ -459,7 +459,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "frmCal";
-            this.Text = "Calculadora";
+            this.Text = "                 ";
             this.Load += new System.EventHandler(this.frmCal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
