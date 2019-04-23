@@ -57,7 +57,8 @@ namespace Calculadora
                     }
                     else if(qtd == 0 || pilhaElementos[qtd - 1].Prefe != 1)
                     {
-                        ele.Prefe = 1;
+                        if(ele.Prefe != 2)
+                            ele.Prefe = 1;
                         pilhaElementos[qtd] = ele;
                         qtd++;
                     }
@@ -135,6 +136,8 @@ namespace Calculadora
                 if (pilhaElementos[i].Prefe == 2 && pilhaElementos[i].Ele == "(")
                 {
                     int j = i;
+                    primeiraVez = true;
+                    operandos = 0;
                     while (pilhaElementos[j] != null && pilhaElementos[j].Ele != ")")
                     {
                         if (pilhaElementos[j].Prefe == 1)
@@ -149,13 +152,13 @@ namespace Calculadora
                         {
                             // adiciona operação
 
-                            if (pilhaElementos[j].Ele != "(" && pilhaElementos[j].Ele != ")")
+                            if (pilhaElementos[j].Ele != "(" || pilhaElementos[j].Ele != ")")
                             {
                                 if (pilhaElementos[j].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                                 {
                                     while (!elementosAEspera.EstaVazia())
                                     {
-                                        if(elementosAEspera.OTopo() != "(")
+                                        if(elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
                                             posFixo.Empilhar(elementosAEspera.OTopo());
                                         elementosAEspera.Desempilhar();
                                     }
@@ -188,7 +191,6 @@ namespace Calculadora
                     {
                         while (!elementosAEspera.EstaVazia())
                         {
-
                             if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
                             {
                                 posFixo.Empilhar(elementosAEspera.OTopo());
@@ -210,13 +212,15 @@ namespace Calculadora
                 {
                     // adiciona operação
 
-                    if (pilhaElementos[i].Ele != "(" && pilhaElementos[i].Ele != ")")
+                    if (pilhaElementos[i].Ele != "(" || pilhaElementos[i].Ele != ")")
                     {
                         if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                         {
                             while (!elementosAEspera.EstaVazia())
                             {
-                                posFixo.Empilhar(elementosAEspera.OTopo());
+
+                                if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
+                                    posFixo.Empilhar(elementosAEspera.OTopo());
                                 elementosAEspera.Desempilhar();
                             }
                             elementosAEspera.Empilhar(pilhaElementos[i].Ele);
@@ -250,7 +254,6 @@ namespace Calculadora
             {
                 while (!elementosAEspera.EstaVazia())
                 {
-
                     if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
                     {
                         posFixo.Empilhar(elementosAEspera.OTopo());
