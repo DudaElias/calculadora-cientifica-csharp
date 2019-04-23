@@ -27,7 +27,7 @@ namespace Calculadora
 
         private void btnAbre_Click(object sender, EventArgs e)
         {
-                if ((sender as Button).Text == "CE")
+                if ((sender as Button).Text == "CE" && qtd != 0)
                 {
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
                     pilhaElementos[qtd] = null;
@@ -39,10 +39,10 @@ namespace Calculadora
                     for(int i = 0; i <= qtd; i++)
                     {
                         pilhaElementos[i] = null;
-                        qtd--;
                     }
+                    qtd = 0;
                 }
-                else
+                else if((sender as Button).Text != "CE")
                 {
                     txtResultado.Text += (sender as Button).Text;
                     Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
@@ -287,25 +287,43 @@ namespace Calculadora
                     result.Desempilhar();
                     char operador = Convert.ToChar(posFixo.OTopo());
                     posFixo.Desempilhar();
-                    switch (operador)
+                    if (operando2 == 0 && operador == '/')
                     {
-                        case '+':
-                            resultado = operando1 + operando2;
-                            break;
-                        case '-':
-                            resultado = operando1 - operando2;
-                            break;
-                        case '*':
-                            resultado = operando1 * operando2;
-                            break;
-                        case '/':
-                            resultado = operando1 / operando2;
-                            break;
-                        case '^':
-                            resultado = Math.Pow(operando1, operando2);
-                            break;
+                        txtResult.Text = "";
+                        lblPos.Text = "";
+                        txtResultado.Text = "";
+                        for (int j = 0; j <= qtd; j++)
+                        {
+                            pilhaElementos[j] = null;
+                            if(!posFixo.EstaVazia())
+                                posFixo.Desempilhar();
+                        }
+                        qtd = 0;
+                        MessageBox.Show("Divisão por 0 não pode ser realizada", "Divisão inválida", MessageBoxButtons.OK);
+                        return;
                     }
-                    result.Empilhar(Convert.ToString(resultado));
+                    else
+                    {
+                        switch (operador)
+                        {
+                            case '+':
+                                resultado = operando1 + operando2;
+                                break;
+                            case '-':
+                                resultado = operando1 - operando2;
+                                break;
+                            case '*':
+                                resultado = operando1 * operando2;
+                                break;
+                            case '/':
+                                resultado = operando1 / operando2;
+                                break;
+                            case '^':
+                                resultado = Math.Pow(operando1, operando2);
+                                break;
+                        }
+                        result.Empilhar(Convert.ToString(resultado));
+                    }
                 }
             }
 
