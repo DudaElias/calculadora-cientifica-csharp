@@ -46,21 +46,19 @@ namespace Calculadora
                 {
                     txtResultado.Text += (sender as Button).Text;
                     Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
+
+                    
                     
                     if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
-                        pilhaElementos[qtd - 1].Ele += ele.Ele;
-                    else if(qtd != 0 && pilhaElementos[0].Prefe == 3 && ele.Prefe == 1)
                     {
-                        if (pilhaElementos[0].Ele == "-")
-                        {
-                            pilhaElementos[0].Ele = "-" + ele.Ele;
-                            pilhaElementos[0].Prefe = 1;
-                        }
-                        else
-                        {
-                            pilhaElementos[qtd] = ele;
-                            qtd++;
-                        }
+                        if (pilhaElementos[qtd - 1].Prefe == 1 || pilhaElementos[qtd - 1].Ele == "-")
+                            pilhaElementos[qtd - 1].Ele += ele.Ele;
+                    }
+                    else if(qtd == 0 || pilhaElementos[qtd - 1].Prefe != 1)
+                    {
+                        ele.Prefe = 1;
+                        pilhaElementos[qtd] = ele;
+                        qtd++;
                     }
                     else
                     {
