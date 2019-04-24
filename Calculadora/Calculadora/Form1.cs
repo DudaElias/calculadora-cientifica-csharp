@@ -57,7 +57,7 @@ namespace Calculadora
                     }
                     else if(qtd == 0 || pilhaElementos[qtd - 1].Prefe != 1)
                     {
-                        if(ele.Prefe != 2)
+                        if(ele.Prefe == 3)
                             ele.Prefe = 1;
                         pilhaElementos[qtd] = ele;
                         qtd++;
@@ -126,129 +126,60 @@ namespace Calculadora
            
         }
 
-        public void ConverterParaPosFixa()
+        private void ConverterParaPosFixa(Elemento[] e)
         {
-            bool primeiraVez = true;
+            bool primeiraConta = true;
             int operandos = 0;
-            int qtdInfos = qtd;
-            for (int i = 0; i < qtdInfos; i++)
+            for(int i = 0; i < qtd; i++)
             {
-                if (pilhaElementos[i].Prefe == 2 && pilhaElementos[i].Ele == "(")
+                
+                if (e[i].Prefe == 1)
                 {
-                    int j = i;
-                    primeiraVez = true;
-                    operandos = 0;
-                    while (pilhaElementos[j] != null && pilhaElementos[j].Ele != ")")
-                    {
-                        if (pilhaElementos[j].Prefe == 1)
-                        {
-                            posFixo.Empilhar(pilhaElementos[j].Ele);
-                            pilhaElementos[j] = null;
-                            operandos++;
-                            if (operandos == 2)
-                                primeiraVez = false;
-                        }
-                        else if (!primeiraVez)
-                        {
-                            // adiciona operação
-
-                            if (pilhaElementos[j].Ele != "(" || pilhaElementos[j].Ele != ")")
-                            {
-                                if (pilhaElementos[j].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
-                                {
-                                    while (!elementosAEspera.EstaVazia())
-                                    {
-                                        if(elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
-                                            posFixo.Empilhar(elementosAEspera.OTopo());
-                                        elementosAEspera.Desempilhar();
-                                    }
-                                    elementosAEspera.Empilhar(pilhaElementos[j].Ele);
-                                }
-                                else
-                                {
-                                    elementosAEspera.Empilhar(pilhaElementos[j].Ele);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            // coloca operação em espera
-                            if (!elementosAEspera.EstaVazia() && pilhaElementos[j].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
-                            {
-                                string x = elementosAEspera.OTopo();
-                                elementosAEspera.Desempilhar();
-                                elementosAEspera.Empilhar(pilhaElementos[j].Ele);
-                                elementosAEspera.Empilhar(x);
-                            }
-                            else
-                                elementosAEspera.Empilhar(pilhaElementos[j].Ele);
-                        }
-
-
-                        j++;
-                    }
-                    if (!elementosAEspera.EstaVazia())
-                    {
-                        while (!elementosAEspera.EstaVazia())
-                        {
-                            if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
-                            {
-                                posFixo.Empilhar(elementosAEspera.OTopo());
-                            }
-                            elementosAEspera.Desempilhar();
-                        }
-                    }
-                    i = j;
-                }
-                if (pilhaElementos[i].Prefe == 1)
-                {
-                    posFixo.Empilhar(pilhaElementos[i].Ele);
-                    pilhaElementos[i] = null;
+                    posFixo.Empilhar(e[i].Ele);
                     operandos++;
                     if (operandos == 2)
-                        primeiraVez = false;
+                        primeiraConta = false;
                 }
-                else if (!primeiraVez)
+                else if (!primeiraConta && !elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                 {
-                    // adiciona operação
-
-                    if (pilhaElementos[i].Ele != "(" || pilhaElementos[i].Ele != ")")
+                    while (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                     {
-                        if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                        if (e[i].Ele == ")" && elementosAEspera.OTopo() == "(")
                         {
-                            while (!elementosAEspera.EstaVazia())
-                            {
-
-                                if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
-                                    posFixo.Empilhar(elementosAEspera.OTopo());
-                                elementosAEspera.Desempilhar();
-                            }
-                            elementosAEspera.Empilhar(pilhaElementos[i].Ele);
+                            elementosAEspera.Desempilhar();
+                            break;
+                        }
+                        if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
+                        {
+                            posFixo.Empilhar(elementosAEspera.Desempilhar());
+                            elementosAEspera.Empilhar(e[i].Ele);
+                            break;
                         }
                         else
                         {
-                            elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                            pilhaElementos[i] = null;
+                            elementosAEspera.Empilhar(e[i].Ele);
+                            break;
                         }
                     }
                 }
                 else
                 {
-                    // coloca operação em espera
-                    if (!elementosAEspera.EstaVazia() && pilhaElementos[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                    if (primeiraConta)
                     {
-                        string x = elementosAEspera.OTopo();
-                        elementosAEspera.Desempilhar();
-                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                        elementosAEspera.Empilhar(x);
+                        if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                        {
+                            //string x = elementosAEspera.Desempilhar();
+                            elementosAEspera.Empilhar(e[i].Ele);
+                            //elementosAEspera.Empilhar(x);
+                        }
+                        else
+                            elementosAEspera.Empilhar(e[i].Ele);
                     }
                     else
                     {
-                        elementosAEspera.Empilhar(pilhaElementos[i].Ele);
-                        pilhaElementos[i] = null;
+                        elementosAEspera.Empilhar(e[i].Ele);
                     }
                 }
-
             }
             if (!elementosAEspera.EstaVazia())
             {
@@ -278,7 +209,7 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            ConverterParaPosFixa();
+            ConverterParaPosFixa(pilhaElementos);
             //Calcular();
         }
 
