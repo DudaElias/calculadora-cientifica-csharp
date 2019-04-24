@@ -36,6 +36,7 @@ namespace Calculadora
                 else if((sender as Button).Text == "C")
                 {
                     txtResultado.Text = "";
+                lblPos.Text = "";
                     for(int i = 0; i <= qtd; i++)
                     {
                         pilhaElementos[i] = null;
@@ -183,7 +184,7 @@ namespace Calculadora
                 lblPos.Text += p.Atual.Info + " ";
                 p.Atual = p.Atual.Prox;
             }
-            //Calcular();
+            Calcular();
         }
 
         public void Calcular()
