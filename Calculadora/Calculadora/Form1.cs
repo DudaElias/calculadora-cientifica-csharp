@@ -109,7 +109,7 @@ namespace Calculadora
                 case "(":
                     return 2;
                 case ")":
-                    return 2;
+                    return 6;
 
             }
 
@@ -126,60 +126,38 @@ namespace Calculadora
            
         }
 
-        private void ConverterParaPosFixa(Elemento[] e)
+        private PilhaHerdaLista<string> ConverterParaPosFixa(Elemento[] e, int qtdInfos)
         {
-            bool primeiraConta = true;
-            int operandos = 0;
-            for(int i = 0; i < qtd; i++)
+            for(int i = 0; i < qtdInfos; i++)
             {
                 
                 if (e[i].Prefe == 1)
                 {
                     posFixo.Empilhar(e[i].Ele);
-                    operandos++;
-                    if (operandos == 2)
-                        primeiraConta = false;
                 }
-                else if (!primeiraConta && !elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+
+                else if (e[i].Prefe == 2)
                 {
-                    while (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                    int j = i + 1;
+                    int k = 0;
+                    Elemento[] eles = new Elemento[20];
+                    while(e[j].Prefe != 6)
                     {
-                        if (e[i].Ele == ")" && elementosAEspera.OTopo() == "(")
-                        {
-                            elementosAEspera.Desempilhar();
-                            break;
-                        }
-                        if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
-                        {
-                            posFixo.Empilhar(elementosAEspera.Desempilhar());
-                            elementosAEspera.Empilhar(e[i].Ele);
-                            break;
-                        }
-                        else
-                        {
-                            elementosAEspera.Empilhar(e[i].Ele);
-                            break;
-                        }
+                        eles[k] = e[j];
+                        k++;
+                        j++;
                     }
+                    ConverterParaPosFixa(eles, k);
+                    i = j;
+                }
+
+                else if(!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                {
+                    posFixo.Empilhar(elementosAEspera.Desempilhar());
+                    elementosAEspera.Empilhar(e[i].Ele);
                 }
                 else
-                {
-                    if (primeiraConta)
-                    {
-                        if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
-                        {
-                            //string x = elementosAEspera.Desempilhar();
-                            elementosAEspera.Empilhar(e[i].Ele);
-                            //elementosAEspera.Empilhar(x);
-                        }
-                        else
-                            elementosAEspera.Empilhar(e[i].Ele);
-                    }
-                    else
-                    {
-                        elementosAEspera.Empilhar(e[i].Ele);
-                    }
-                }
+                  elementosAEspera.Empilhar(e[i].Ele);
             }
             if (!elementosAEspera.EstaVazia())
             {
@@ -192,13 +170,8 @@ namespace Calculadora
                     elementosAEspera.Desempilhar();
                 }
             }
-            posFixo.Inverter();
-            posFixo.Atual = posFixo.Primeiro;
-            for (int i = 1; i <= posFixo.Tamanho(); i++)
-            {
-                lblPos.Text += posFixo.Atual.Info + " ";
-                posFixo.Atual = posFixo.Atual.Prox;
-            }
+            return posFixo;
+            
 
         }
 
@@ -209,7 +182,14 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            ConverterParaPosFixa(pilhaElementos);
+            PilhaHerdaLista<string> p =  ConverterParaPosFixa(pilhaElementos, qtd);
+            p.Inverter();
+            p.Atual = p.Primeiro;
+            for (int i = 1; i <= p.Tamanho(); i++)
+            {
+                lblPos.Text += p.Atual.Info + " ";
+                p.Atual = p.Atual.Prox;
+            }
             //Calcular();
         }
 
