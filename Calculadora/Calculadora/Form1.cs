@@ -109,7 +109,7 @@ namespace Calculadora
                 case "(":
                     return 2;
                 case ")":
-                    return 6;
+                    return 2;
 
             }
 
@@ -136,25 +136,18 @@ namespace Calculadora
                     posFixo.Empilhar(e[i].Ele);
                 }
 
-                else if (e[i].Prefe == 2)
-                {
-                    int j = i + 1;
-                    int k = 0;
-                    Elemento[] eles = new Elemento[20];
-                    while(e[j].Prefe != 6)
-                    {
-                        eles[k] = e[j];
-                        k++;
-                        j++;
-                    }
-                    ConverterParaPosFixa(eles, k);
-                    i = j;
-                }
-
                 else if(!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                 {
-                    posFixo.Empilhar(elementosAEspera.Desempilhar());
-                    elementosAEspera.Empilhar(e[i].Ele);
+                    if (e[i].Prefe != 2)
+                    {
+                        posFixo.Empilhar(elementosAEspera.Desempilhar());
+                        elementosAEspera.Empilhar(e[i].Ele);
+                    }
+                    else if (e[i].Ele == "(")
+                        elementosAEspera.Empilhar(e[i].Ele);
+                    else
+                        while (elementosAEspera.OTopo() != "(")
+                            posFixo.Empilhar(elementosAEspera.Desempilhar());
                 }
                 else
                   elementosAEspera.Empilhar(e[i].Ele);
