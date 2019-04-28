@@ -16,12 +16,13 @@ namespace Calculadora
         {
             InitializeComponent();
             pilhaElementos = new Elemento[20];
-            posFixo = new PilhaHerdaLista<string>();
+            posFixo = new string[20];
             elementosAEspera = new PilhaHerdaLista<string>();
         }
 
         private Elemento[] pilhaElementos;
-        private PilhaHerdaLista<string> posFixo;
+        private string[] numeros;
+        private string[] posFixo;
         private PilhaHerdaLista<string> elementosAEspera;
         private int qtd = 0;
 
@@ -127,48 +128,57 @@ namespace Calculadora
            
         }
 
-        public string ConverterParaLetra()
+        public void ConverterParaLetra()
         {
-            string paraExibir = "";
+            numeros = new string[20];
             const int indice = 65;
-            posFixo.Inverter();
-            posFixo.Atual = posFixo.Primeiro;
-            for(int i = 0; i < posFixo.Tamanho(); i++)
+            int letra = 0;
+            for(int i = 0; i < qtd; i++)
             {
-                if (DecidirPreferencia(posFixo.Atual.Info) == 1)
-                    paraExibir += (char) (indice + i);
-                else
-                    paraExibir += posFixo.Atual.Info;
-                posFixo.Atual = posFixo.Atual.Prox;
-            }
-            return paraExibir;
-        }
-
-        private string ConverterParaPosFixa(Elemento[] e, int qtdInfos)
-        {
-            for(int i = 0; i < qtdInfos; i++)
-            {
-                
-                if (e[i].Prefe == 1)
+                if (pilhaElementos[i].Prefe == 1)
                 {
-                    posFixo.Empilhar(e[i].Ele);
+                    numeros[letra] = pilhaElementos[i].Ele;
+                    pilhaElementos[i].Ele = ((char)(indice + letra)).ToString();
+                    letra++;
                 }
 
-                else if(!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+            }
+        }
+
+        private string[] ConverterParaPosFixa(Elemento[] e, int qtdInfos)
+        {
+            int i;
+            int j = 0;
+            for(i = 0; i < qtdInfos; i++)
+            {
+
+                if (e[i].Prefe == 1)
+                {
+                    posFixo[j] = e[i].Ele;
+                    j++;
+                }
+
+                else if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
                 {
                     if (e[i].Prefe != 2)
                     {
-                        posFixo.Empilhar(elementosAEspera.Desempilhar());
+                        posFixo[j] = elementosAEspera.Desempilhar();
+                        j++;
                         elementosAEspera.Empilhar(e[i].Ele);
                     }
                     else if (e[i].Ele == "(")
                         elementosAEspera.Empilhar(e[i].Ele);
                     else
                         while (elementosAEspera.OTopo() != "(")
-                            posFixo.Empilhar(elementosAEspera.Desempilhar());
+                        {
+                            posFixo[j] = elementosAEspera.Desempilhar();
+                            j++;
+                        }
                 }
                 else
-                  elementosAEspera.Empilhar(e[i].Ele);
+                {
+                    elementosAEspera.Empilhar(e[i].Ele);
+                }
             }
             if (!elementosAEspera.EstaVazia())
             {
@@ -176,12 +186,13 @@ namespace Calculadora
                 {
                     if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
                     {
-                        posFixo.Empilhar(elementosAEspera.OTopo());
+                        posFixo[j] = elementosAEspera.OTopo();
+                        j++;
                     }
                     elementosAEspera.Desempilhar();
                 }
             }
-            return ConverterParaLetra();
+            return posFixo;
         }
 
         private void frmCal_Load(object sender, EventArgs e)
@@ -191,8 +202,11 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            string p =  ConverterParaPosFixa(pilhaElementos, qtd);
-            lblPos.Text = p;
+            ConverterParaLetra();
+            string[] a = ConverterParaPosFixa(pilhaElementos, qtd);
+            // CONFERIR SE OS PARENTESES ESTÃO COMBINADOS
+            for(int i = 0; i < qtd; i++)
+                lblPos.Text += a[i];
             Calcular();
         }
 
@@ -200,12 +214,13 @@ namespace Calculadora
         {
             PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
             double resultado = 0;
-            for(int i = 0; !posFixo.EstaVazia(); i++)
+            int k = 0;
+            for(int i = 0; i < qtd; i++)
             {
-                if (DecidirPreferencia(posFixo.OTopo()) == 1)
+                if (DecidirPreferencia(posFixo[i]) == 1)
                 {
-                    result.Empilhar(posFixo.OTopo());
-                    posFixo.Desempilhar();
+                    result.Empilhar(numeros[k]);
+                    k++;
                 }
                 else
                 {
@@ -213,8 +228,7 @@ namespace Calculadora
                     result.Desempilhar();
                     double operando1 = Convert.ToDouble(result.OTopo());
                     result.Desempilhar();
-                    char operador = Convert.ToChar(posFixo.OTopo());
-                    posFixo.Desempilhar();
+                    char operador = Convert.ToChar(posFixo[i]);
                     if (operando2 == 0 && operador == '/')
                     {
                         txtResult.Text = "";
@@ -223,8 +237,8 @@ namespace Calculadora
                         for (int j = 0; j <= qtd; j++)
                         {
                             pilhaElementos[j] = null;
-                            if(!posFixo.EstaVazia())
-                                posFixo.Desempilhar();
+                            posFixo[j] = null;
+                            numeros[j] = "";
                         }
                         qtd = 0;
                         MessageBox.Show("Divisão por 0 não pode ser realizada", "Divisão inválida", MessageBoxButtons.OK);
@@ -255,7 +269,7 @@ namespace Calculadora
                 }
             }
 
-            txtResult.Text = Convert.ToString(result.OTopo());
+            txtResult.Text = Convert.ToString(result.Ultimo.Info);
         }
     }
 }
