@@ -127,7 +127,24 @@ namespace Calculadora
            
         }
 
-        private PilhaHerdaLista<string> ConverterParaPosFixa(Elemento[] e, int qtdInfos)
+        public string ConverterParaLetra()
+        {
+            string paraExibir = "";
+            const int indice = 65;
+            posFixo.Inverter();
+            posFixo.Atual = posFixo.Primeiro;
+            for(int i = 0; i < posFixo.Tamanho(); i++)
+            {
+                if (DecidirPreferencia(posFixo.Atual.Info) == 1)
+                    paraExibir += (char) (indice + i);
+                else
+                    paraExibir += posFixo.Atual.Info;
+                posFixo.Atual = posFixo.Atual.Prox;
+            }
+            return paraExibir;
+        }
+
+        private string ConverterParaPosFixa(Elemento[] e, int qtdInfos)
         {
             for(int i = 0; i < qtdInfos; i++)
             {
@@ -164,9 +181,7 @@ namespace Calculadora
                     elementosAEspera.Desempilhar();
                 }
             }
-            return posFixo;
-            
-
+            return ConverterParaLetra();
         }
 
         private void frmCal_Load(object sender, EventArgs e)
@@ -176,14 +191,8 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            PilhaHerdaLista<string> p =  ConverterParaPosFixa(pilhaElementos, qtd);
-            p.Inverter();
-            p.Atual = p.Primeiro;
-            for (int i = 1; i <= p.Tamanho(); i++)
-            {
-                lblPos.Text += p.Atual.Info + " ";
-                p.Atual = p.Atual.Prox;
-            }
+            string p =  ConverterParaPosFixa(pilhaElementos, qtd);
+            lblPos.Text = p;
             Calcular();
         }
 
