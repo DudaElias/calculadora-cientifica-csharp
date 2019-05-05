@@ -33,16 +33,50 @@ namespace Calculadora
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
                     pilhaElementos[qtd] = null;
                     qtd--;
+                    btn0.Enabled = true;
+                    btn1.Enabled = true;
+                    btn2.Enabled = true;
+                    btn3.Enabled = true;
+                    btn4.Enabled = true;
+                    btn5.Enabled = true;
+                    btn6.Enabled = true;
+                    btn7.Enabled = true;
+                    btn8.Enabled = true;
+                    btn9.Enabled = true;
+                    btnAbre.Enabled = true;
+                    btnFecha.Enabled = true;
+                    btnDividir.Enabled = true;
+                    btnElevado.Enabled = true;
+                    btnMais.Enabled = true;
+                    btnMenos.Enabled = true;
+                    btnPonto.Enabled = true;
                 }
                 else if((sender as Button).Text == "C")
                 {
                     txtResultado.Text = "";
-                lblPos.Text = "";
+                    lblPos.Text = "";
                     for(int i = 0; i <= qtd; i++)
                     {
                         pilhaElementos[i] = null;
                     }
                     qtd = 0;
+                    btn0.Enabled = true;
+                    btn1.Enabled = true;
+                    btn2.Enabled = true;
+                    btn3.Enabled = true;
+                    btn4.Enabled = true;
+                    btn5.Enabled = true;
+                    btn6.Enabled = true;
+                    btn7.Enabled = true;
+                    btn8.Enabled = true;
+                    btn9.Enabled = true;
+                    btnAbre.Enabled = true;
+                    btnFecha.Enabled = true;
+                    btnDividir.Enabled = true;
+                    btnElevado.Enabled = true;
+                    btnMais.Enabled = true;
+                    btnMenos.Enabled = true;
+                    btnPonto.Enabled = true;
                 }
                 else if((sender as Button).Text != "CE")
                 {
@@ -69,8 +103,30 @@ namespace Calculadora
                         pilhaElementos[qtd] = ele;
                         qtd++;
                     }
+                    if(qtd == 20)
+                    {
+                        MessageBox.Show("O máximo de dados da calculadora foi alcançado", "Máximo alcançado", MessageBoxButtons.OK);
+                        btn0.Enabled = false;
+                        btn1.Enabled = false;
+                        btn2.Enabled = false;
+                        btn3.Enabled = false;
+                        btn4.Enabled = false;
+                        btn5.Enabled = false;
+                        btn6.Enabled = false;
+                        btn7.Enabled = false;
+                        btn8.Enabled = false;
+                        btn9.Enabled = false;
+                        btnAbre.Enabled = false;
+                        btnFecha.Enabled = false;
+                        btnDividir.Enabled = true;
+                        btnElevado.Enabled = false;
+                        btnMais.Enabled = false;
+                        btnMenos.Enabled = false;
+                        btnPonto.Enabled = false;
+                        qtd--;
+                    }
 
-                }
+            }
         }
 
         public int DecidirPreferencia(string e)
