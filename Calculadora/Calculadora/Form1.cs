@@ -26,8 +26,13 @@ namespace Calculadora
         private PilhaHerdaLista<string> elementosAEspera;
         private int qtd = 0;
 
+
+
         private void btnAbre_Click(object sender, EventArgs e)
         {
+
+              
+
                 if ((sender as Button).Text == "CE" && qtd != 0)
                 {
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
@@ -83,9 +88,51 @@ namespace Calculadora
                     txtResultado.Text += (sender as Button).Text;
                     Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
 
-                    
-                    
-                    if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
+                if (txtResultado.Text != "")
+                {
+                    if (ele.Prefe > 2)
+                    {
+                        btnDividir.Enabled = false;
+                        btnElevado.Enabled = false;
+                        btnMais.Enabled = false;
+                        btnPonto.Enabled = false;
+                        btnVezes.Enabled = false;
+                    }
+                    else
+                    {
+                        if (ele.Ele != "(")
+                        {
+                            btnDividir.Enabled = true;
+                            btnElevado.Enabled = true;
+                            btnMais.Enabled = true;
+                            btnPonto.Enabled = true;
+                            btnVezes.Enabled = true;
+                        }
+                        else
+                        {
+                            btnDividir.Enabled = false;
+                            btnElevado.Enabled = false;
+                            btnMais.Enabled = false;
+                            btnPonto.Enabled = false;
+                            btnVezes.Enabled = false;
+                        }
+                    }
+                }
+                else
+                {
+                    btnDividir.Enabled = false;
+                    btnElevado.Enabled = false;
+                    btnMais.Enabled = false;
+                    btnPonto.Enabled = false;
+                    btnVezes.Enabled = false;
+                }
+
+                
+
+            
+
+
+                if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
                     {
 
                         if (pilhaElementos[qtd - 1].Prefe == 1 || pilhaElementos[qtd - 1].Ele == "-")
@@ -253,7 +300,14 @@ namespace Calculadora
 
         private void frmCal_Load(object sender, EventArgs e)
         {
-
+            if (txtResultado.Text == "")
+            {
+                btnElevado.Enabled = false;
+                btnDividir.Enabled = false;
+                btnMais.Enabled = false;
+                btnVezes.Enabled = false;
+                btnPonto.Enabled = false;
+            }
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
@@ -326,6 +380,7 @@ namespace Calculadora
             }
 
             txtResult.Text = Convert.ToString(result.Ultimo.Info);
+            
         }
     }
 }
