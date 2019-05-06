@@ -96,7 +96,11 @@ namespace Calculadora
                         btnElevado.Enabled = false;
                         btnMais.Enabled = false;
                         btnPonto.Enabled = false;
+
+                        btnAbre.Enabled = true;
+                        btnFecha.Enabled = true;
                         btnVezes.Enabled = false;
+
                     }
                     else
                     {
@@ -117,6 +121,8 @@ namespace Calculadora
                             btnVezes.Enabled = false;
                         }
                     }
+                    
+                    
                 }
                 else
                 {
@@ -125,31 +131,28 @@ namespace Calculadora
                     btnMais.Enabled = false;
                     btnPonto.Enabled = false;
                     btnVezes.Enabled = false;
+                    btnAbre.Enabled = true;
+                    btnFecha.Enabled = true;
                 }
-
                 
-
-            
-
-
                 if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
-                    {
+                {
 
-                        if (pilhaElementos[qtd - 1].Prefe == 1 || pilhaElementos[qtd - 1].Ele == "-")
-                            pilhaElementos[qtd - 1].Ele += ele.Ele;
-                    }
-                    else if(qtd == 0 || pilhaElementos[qtd - 1].Prefe != 1)
-                    {
-                        if(ele.Prefe == 3)
-                            ele.Prefe = 1;
-                        pilhaElementos[qtd] = ele;
-                        qtd++;
-                    }
-                    else
-                    {
-                        pilhaElementos[qtd] = ele;
-                        qtd++;
-                    }
+                    if (pilhaElementos[qtd - 1].Prefe == 1 || pilhaElementos[qtd - 1].Ele == "-")
+                        pilhaElementos[qtd - 1].Ele += ele.Ele;
+                }
+                else if(qtd == 0 || pilhaElementos[qtd - 1].Prefe != 1)
+                {
+                    if(ele.Prefe == 3)
+                        ele.Prefe = 1;
+                    pilhaElementos[qtd] = ele;
+                    qtd++;
+                }
+                else
+                {
+                    pilhaElementos[qtd] = ele;
+                    qtd++;
+                }
                     if(qtd == 20)
                     {
                         MessageBox.Show("O máximo de dados da calculadora foi alcançado", "Máximo alcançado", MessageBoxButtons.OK);
@@ -172,8 +175,12 @@ namespace Calculadora
                         btnPonto.Enabled = false;
                         qtd--;
                     }
+                    if (pilhaElementos[qtd-1] != null && pilhaElementos[qtd-1].Prefe == 1)
+                    {
+                        btnAbre.Enabled = false;
+                    }
 
-            }
+                }
         }
 
         public int DecidirPreferencia(string e)
@@ -181,26 +188,6 @@ namespace Calculadora
 
             switch (e)
             {
-                /*case "1":
-                    return 1;
-                case "2":
-                    return 1;
-                case "3":
-                    return 1;
-                case "4":
-                    return 1;
-                case "5":
-                    return 1;
-                case "6":
-                    return 1;
-                case "7":
-                    return 1;
-                case "8":
-                    return 1;
-                case "9":
-                    return 1;
-                case "0":
-                    return 1;*/
                 case "/":
                     return 4;
                 case "*":
@@ -334,9 +321,9 @@ namespace Calculadora
                 }
                 else
                 {
-                    double operando2 = Convert.ToDouble(result.OTopo());
+                    double operando2 = double.Parse(result.OTopo());
                     result.Desempilhar();
-                    double operando1 = Convert.ToDouble(result.OTopo());
+                    double operando1 = double.Parse(result.OTopo());
                     result.Desempilhar();
                     char operador = Convert.ToChar(posFixo[i]);
                     if (operando2 == 0 && operador == '/')
