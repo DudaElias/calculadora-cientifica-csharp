@@ -47,7 +47,6 @@
             this.btnVezes = new System.Windows.Forms.Button();
             this.btnDividir = new System.Windows.Forms.Button();
             this.btnElevado = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblPos = new System.Windows.Forms.Label();
             this.btnAbre = new System.Windows.Forms.Button();
             this.btnFecha = new System.Windows.Forms.Button();
@@ -310,28 +309,17 @@
             this.btnElevado.UseVisualStyleBackColor = false;
             this.btnElevado.Click += new System.EventHandler(this.btnAbre_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(43, 203);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 29);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Pósfixa:";
-            // 
             // lblPos
             // 
             this.lblPos.AutoSize = true;
             this.lblPos.BackColor = System.Drawing.Color.Transparent;
-            this.lblPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPos.ForeColor = System.Drawing.Color.White;
-            this.lblPos.Location = new System.Drawing.Point(42, 232);
+            this.lblPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPos.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblPos.Location = new System.Drawing.Point(43, 203);
             this.lblPos.Name = "lblPos";
-            this.lblPos.Size = new System.Drawing.Size(0, 31);
-            this.lblPos.TabIndex = 19;
+            this.lblPos.Size = new System.Drawing.Size(97, 29);
+            this.lblPos.TabIndex = 18;
+            this.lblPos.Text = "Pósfixa:";
             // 
             // btnAbre
             // 
@@ -429,7 +417,7 @@
             this.lblIn.BackColor = System.Drawing.Color.Transparent;
             this.lblIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblIn.Location = new System.Drawing.Point(43, 235);
+            this.lblIn.Location = new System.Drawing.Point(50, 302);
             this.lblIn.Name = "lblIn";
             this.lblIn.Size = new System.Drawing.Size(74, 29);
             this.lblIn.TabIndex = 28;
@@ -451,7 +439,6 @@
             this.Controls.Add(this.btnFecha);
             this.Controls.Add(this.btnAbre);
             this.Controls.Add(this.lblPos);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnElevado);
             this.Controls.Add(this.btnDividir);
             this.Controls.Add(this.btnVezes);
@@ -500,7 +487,6 @@
         private System.Windows.Forms.Button btnVezes;
         private System.Windows.Forms.Button btnDividir;
         private System.Windows.Forms.Button btnElevado;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPos;
         private System.Windows.Forms.Button btnAbre;
         private System.Windows.Forms.Button btnFecha;

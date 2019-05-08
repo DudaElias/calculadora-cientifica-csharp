@@ -198,7 +198,8 @@ namespace Calculadora
             // CONFERIR SE OS PARENTESES ESTÃO COMBINADOS
             for (int i = 0; i < qtd; i++)
             {
-                lblIn.Text += eles[i].Ele;
+                if(eles[i].Prefe != 2)
+                    lblIn.Text += eles[i].Ele;
                 lblPos.Text += a[i];
             }
             ex.Calcular(txtResult,lblPos,txtResultado,ref qtd);
