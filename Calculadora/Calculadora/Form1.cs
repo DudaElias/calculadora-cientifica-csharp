@@ -192,12 +192,16 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            ex.ConverterParaLetra(qtd);
+            Elemento[] eles = ex.ConverterParaLetra(qtd);
             string[] a = ex.ConverterParaPosFixa(ex.PilhaElementos, qtd);
+            
             // CONFERIR SE OS PARENTESES ESTÃO COMBINADOS
-            for(int i = 0; i < qtd; i++)
+            for (int i = 0; i < qtd; i++)
+            {
+                lblIn.Text += eles[i].Ele;
                 lblPos.Text += a[i];
-            ex.Calcular(txtResult,lblPos,txtResultado,qtd);
+            }
+            ex.Calcular(txtResult,lblPos,txtResultado,ref qtd);
         }
 
         

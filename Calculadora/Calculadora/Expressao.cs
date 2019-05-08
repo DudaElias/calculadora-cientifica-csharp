@@ -78,7 +78,7 @@ namespace Calculadora
 
         }
 
-        public void ConverterParaLetra(int qtdInfos)
+        public Elemento[] ConverterParaLetra(int qtdInfos)
         {
             numeros = new string[20];
             const int indice = 65;
@@ -93,6 +93,7 @@ namespace Calculadora
                 }
 
             }
+            return pilhaElementos;
         }
 
         public string[] ConverterParaPosFixa(Elemento[] e, int qtdInfos)
@@ -153,7 +154,7 @@ namespace Calculadora
             return posFixo;
         }
 
-        public void Calcular(TextBox txtResult, Label lblPos, TextBox txtResultado, int qtdInfos)
+        public void Calcular(TextBox txtResult, Label lblPos, TextBox txtResultado, ref int qtdInfos)
         {
             PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
             double resultado = 0;
@@ -177,13 +178,13 @@ namespace Calculadora
                         txtResult.Text = "";
                         lblPos.Text = "";
                         txtResultado.Text = "";
-                        for (int j = 0; j <= qtd; j++)
+                        for (int j = 0; j <= qtdInfos; j++)
                         {
                             pilhaElementos[j] = null;
                             posFixo[j] = null;
                             numeros[j] = "";
                         }
-                        qtd = 0;
+                        qtdInfos = 0;
                         MessageBox.Show("Divisão por 0 não pode ser realizada", "Divisão inválida", MessageBoxButtons.OK);
                         return;
                     }
