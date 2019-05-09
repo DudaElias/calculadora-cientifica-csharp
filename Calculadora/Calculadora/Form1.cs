@@ -96,7 +96,6 @@ namespace Calculadora
                         btnElevado.Enabled = false;
                         btnMais.Enabled = false;
                         btnPonto.Enabled = false;
-
                         btnAbre.Enabled = true;
                         btnFecha.Enabled = true;
                         btnVezes.Enabled = false;
