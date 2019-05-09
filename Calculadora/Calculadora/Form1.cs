@@ -25,7 +25,8 @@ namespace Calculadora
         private string[] posFixo;
         private PilhaHerdaLista<string> elementosAEspera;
         private int qtd = 0;
-
+        int qtdParenteses1 = 0;
+        int qtdParenteses2 = 0;
 
 
         private void btnAbre_Click(object sender, EventArgs e)
@@ -96,9 +97,6 @@ namespace Calculadora
                         btnElevado.Enabled = false;
                         btnMais.Enabled = false;
                         btnPonto.Enabled = false;
-
-                        btnAbre.Enabled = true;
-                        btnFecha.Enabled = true;
                         btnVezes.Enabled = false;
 
                     }
@@ -131,9 +129,12 @@ namespace Calculadora
                     btnMais.Enabled = false;
                     btnPonto.Enabled = false;
                     btnVezes.Enabled = false;
-                    btnAbre.Enabled = true;
-                    btnFecha.Enabled = true;
                 }
+
+                if (ele.Ele == ")")
+                    qtdParenteses2++;
+                else if (ele.Ele == "(")
+                    qtdParenteses1++;
                 
                 if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
                 {
@@ -175,10 +176,10 @@ namespace Calculadora
                         btnPonto.Enabled = false;
                         qtd--;
                     }
-                    if (pilhaElementos[qtd-1] != null && pilhaElementos[qtd-1].Prefe == 1)
+                    /*if (pilhaElementos[qtd-1] != null && pilhaElementos[qtd-1].Prefe == 1)
                     {
                         btnAbre.Enabled = false;
-                    }
+                    }*/
 
                 }
         }
@@ -312,61 +313,69 @@ namespace Calculadora
             PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
             double resultado = 0;
             int k = 0;
-            for(int i = 0; i < qtd; i++)
+            if (qtdParenteses1 != qtdParenteses2)
+                MessageBox.Show("Quantidade de abre e fecha parênteses não correspondentes");
+            else
             {
-                if (DecidirPreferencia(posFixo[i]) == 1)
+                for (int i = 0; i < qtd; i++)
                 {
-                    result.Empilhar(numeros[k]);
-                    k++;
-                }
-                else
-                {
-                    double operando2 = double.Parse(result.OTopo());
-                    result.Desempilhar();
-                    double operando1 = double.Parse(result.OTopo());
-                    result.Desempilhar();
-                    char operador = Convert.ToChar(posFixo[i]);
-                    if (operando2 == 0 && operador == '/')
+                    if (DecidirPreferencia(posFixo[i]) == 1)
                     {
-                        txtResult.Text = "";
-                        lblPos.Text = "";
-                        txtResultado.Text = "";
-                        for (int j = 0; j <= qtd; j++)
-                        {
-                            pilhaElementos[j] = null;
-                            posFixo[j] = null;
-                            numeros[j] = "";
-                        }
-                        qtd = 0;
-                        MessageBox.Show("Divisão por 0 não pode ser realizada", "Divisão inválida", MessageBoxButtons.OK);
-                        return;
+                        result.Empilhar(numeros[k]);
+                        k++;
                     }
                     else
                     {
-                        switch (operador)
+                        double operando2 = double.Parse(result.OTopo());
+                        result.Desempilhar();
+                        double operando1 = double.Parse(result.OTopo());
+                        result.Desempilhar();
+                        char operador = Convert.ToChar(posFixo[i]);
+                        if (operando2 == 0 && operador == '/')
                         {
-                            case '+':
-                                resultado = operando1 + operando2;
-                                break;
-                            case '-':
-                                resultado = operando1 - operando2;
-                                break;
-                            case '*':
-                                resultado = operando1 * operando2;
-                                break;
-                            case '/':
-                                resultado = operando1 / operando2;
-                                break;
-                            case '^':
-                                resultado = Math.Pow(operando1, operando2);
-                                break;
+                            txtResult.Text = "";
+                            lblPos.Text = "";
+                            txtResultado.Text = "";
+                            for (int j = 0; j <= qtd; j++)
+                            {
+                                pilhaElementos[j] = null;
+                                posFixo[j] = null;
+                                numeros[j] = "";
+                            }
+                            qtd = 0;
+                            MessageBox.Show("Divisão por 0 não pode ser realizada", "Divisão inválida", MessageBoxButtons.OK);
+                            return;
                         }
-                        result.Empilhar(Convert.ToString(resultado));
+                        else
+                        {
+                            switch (operador)
+                            {
+                                case '+':
+                                    resultado = operando1 + operando2;
+                                    break;
+                                case '-':
+                                    resultado = operando1 - operando2;
+                                    break;
+                                case '*':
+                                    resultado = operando1 * operando2;
+                                    break;
+                                case '/':
+                                    resultado = operando1 / operando2;
+                                    break;
+                                case '^':
+                                    resultado = Math.Pow(operando1, operando2);
+                                    break;
+                            }
+                            result.Empilhar(Convert.ToString(resultado));
+                        }
                     }
                 }
-            }
 
-            txtResult.Text = Convert.ToString(result.Ultimo.Info);
+                txtResult.Text = Convert.ToString(result.Ultimo.Info);
+                qtdParenteses1 = 0;
+                qtdParenteses2 = 0;
+            }
+               
             
         }
     }
