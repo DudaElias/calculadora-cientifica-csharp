@@ -15,16 +15,11 @@ namespace Calculadora
         public frmCal()
         {
             InitializeComponent();
-            pilhaElementos = new Elemento[20];
-            posFixo = new string[20];
-            elementosAEspera = new PilhaHerdaLista<string>();
         }
+        int qtd = 0;
+        
 
-        private Elemento[] pilhaElementos;
-        private string[] numeros;
-        private string[] posFixo;
-        private PilhaHerdaLista<string> elementosAEspera;
-        private int qtd = 0;
+        private Expressao ex = new Expressao();
         int qtdParenteses1 = 0;
         int qtdParenteses2 = 0;
 
@@ -37,7 +32,7 @@ namespace Calculadora
                 if ((sender as Button).Text == "CE" && qtd != 0)
                 {
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
-                    pilhaElementos[qtd] = null;
+                    ex[qtd] = null;
                     qtd--;
                     btn0.Enabled = true;
                     btn1.Enabled = true;
@@ -63,7 +58,7 @@ namespace Calculadora
                     lblPos.Text = "";
                     for(int i = 0; i <= qtd; i++)
                     {
-                        pilhaElementos[i] = null;
+                        ex[i] = null;
                     }
                     qtd = 0;
                     btn0.Enabled = true;
@@ -87,7 +82,7 @@ namespace Calculadora
                 else if((sender as Button).Text != "CE")
                 {
                     txtResultado.Text += (sender as Button).Text;
-                    Elemento ele = new Elemento((sender as Button).Text, DecidirPreferencia((sender as Button).Text));
+                    Elemento ele = new Elemento((sender as Button).Text, ex.DecidirPreferencia((sender as Button).Text));
 
                 if (txtResultado.Text != "")
                 {
@@ -97,6 +92,9 @@ namespace Calculadora
                         btnElevado.Enabled = false;
                         btnMais.Enabled = false;
                         btnPonto.Enabled = false;
+
+                        btnAbre.Enabled = true;
+                        btnFecha.Enabled = true;
                         btnVezes.Enabled = false;
 
                     }
@@ -129,29 +127,31 @@ namespace Calculadora
                     btnMais.Enabled = false;
                     btnPonto.Enabled = false;
                     btnVezes.Enabled = false;
+                    btnAbre.Enabled = true;
+                    btnFecha.Enabled = true;
                 }
-
                 if (ele.Ele == ")")
                     qtdParenteses2++;
                 else if (ele.Ele == "(")
                     qtdParenteses1++;
-                
-                if (qtd != 0 && pilhaElementos[qtd - 1].Prefe == 1 && ele.Prefe == 1)
+
+
+                if (qtd != 0 && ex[qtd - 1].Prefe == 1 && ele.Prefe == 1)
                 {
 
-                    if (pilhaElementos[qtd - 1].Prefe == 1 || pilhaElementos[qtd - 1].Ele == "-")
-                        pilhaElementos[qtd - 1].Ele += ele.Ele;
+                    if (ex[qtd - 1].Prefe == 1 || ex[qtd - 1].Ele == "-")
+                        ex[qtd - 1].Ele += ele.Ele;
                 }
-                else if(qtd == 0 || pilhaElementos[qtd - 1].Prefe != 1)
+                else if(qtd == 0 || ex[qtd - 1].Prefe != 1)
                 {
                     if(ele.Prefe == 3)
                         ele.Prefe = 1;
-                    pilhaElementos[qtd] = ele;
+                    ex[qtd] = ele;
                     qtd++;
                 }
                 else
                 {
-                    pilhaElementos[qtd] = ele;
+                    ex[qtd] = ele;
                     qtd++;
                 }
                     if(qtd == 20)
@@ -176,114 +176,12 @@ namespace Calculadora
                         btnPonto.Enabled = false;
                         qtd--;
                     }
-                    /*if (pilhaElementos[qtd-1] != null && pilhaElementos[qtd-1].Prefe == 1)
+                    if (ex[qtd-1] != null && ex[qtd-1].Prefe == 1)
                     {
                         btnAbre.Enabled = false;
-                    }*/
-
-                }
-        }
-
-        public int DecidirPreferencia(string e)
-        {
-
-            switch (e)
-            {
-                case "/":
-                    return 4;
-                case "*":
-                    return 4;
-                case "+":
-                    return 3;
-                case "-":
-                    return 3;
-                case "^":
-                    return 5;
-                case "(":
-                    return 2;
-                case ")":
-                    return 2;
-
-            }
-
-            try
-            {
-                //double eDouble = Convert.ToDouble(e);
-                return 1;
-            }
-            catch
-            {
-                return 0;
-            }
-
-           
-        }
-
-        public void ConverterParaLetra()
-        {
-            numeros = new string[20];
-            const int indice = 65;
-            int letra = 0;
-            for(int i = 0; i < qtd; i++)
-            {
-                if (pilhaElementos[i].Prefe == 1)
-                {
-                    numeros[letra] = pilhaElementos[i].Ele;
-                    pilhaElementos[i].Ele = ((char)(indice + letra)).ToString();
-                    letra++;
-                }
-
-            }
-        }
-
-        private string[] ConverterParaPosFixa(Elemento[] e, int qtdInfos)
-        {
-            int i;
-            int j = 0;
-            for(i = 0; i < qtdInfos; i++)
-            {
-
-                if (e[i].Prefe == 1)
-                {
-                    posFixo[j] = e[i].Ele;
-                    j++;
-                }
-
-                else if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
-                {
-                    if (e[i].Prefe != 2)
-                    {
-                        posFixo[j] = elementosAEspera.Desempilhar();
-                        j++;
-                        elementosAEspera.Empilhar(e[i].Ele);
                     }
-                    else if (e[i].Ele == "(")
-                        elementosAEspera.Empilhar(e[i].Ele);
-                    else
-                        while (elementosAEspera.OTopo() != "(")
-                        {
-                            posFixo[j] = elementosAEspera.Desempilhar();
-                            j++;
-                        }
+
                 }
-                else
-                {
-                    elementosAEspera.Empilhar(e[i].Ele);
-                }
-            }
-            if (!elementosAEspera.EstaVazia())
-            {
-                while (!elementosAEspera.EstaVazia())
-                {
-                    if (elementosAEspera.OTopo() != "(" && elementosAEspera.OTopo() != ")")
-                    {
-                        posFixo[j] = elementosAEspera.OTopo();
-                        j++;
-                    }
-                    elementosAEspera.Desempilhar();
-                }
-            }
-            return posFixo;
         }
 
         private void frmCal_Load(object sender, EventArgs e)
@@ -300,83 +198,23 @@ namespace Calculadora
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            ConverterParaLetra();
-            string[] a = ConverterParaPosFixa(pilhaElementos, qtd);
-            // CONFERIR SE OS PARENTESES ESTÃO COMBINADOS
-            for(int i = 0; i < qtd; i++)
-                lblPos.Text += a[i];
-            Calcular();
-        }
 
-        public void Calcular()
-        {
-            PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
-            double resultado = 0;
-            int k = 0;
             if (qtdParenteses1 != qtdParenteses2)
                 MessageBox.Show("Quantidade de abre e fecha parênteses não correspondentes");
             else
             {
+                Elemento[] eles = ex.ConverterParaLetra(qtd);
+                string[] a = ex.ConverterParaPosFixa(ex.PilhaElementos, qtd);
                 for (int i = 0; i < qtd; i++)
                 {
-                    if (DecidirPreferencia(posFixo[i]) == 1)
-                    {
-                        result.Empilhar(numeros[k]);
-                        k++;
-                    }
-                    else
-                    {
-                        double operando2 = double.Parse(result.OTopo());
-                        result.Desempilhar();
-                        double operando1 = double.Parse(result.OTopo());
-                        result.Desempilhar();
-                        char operador = Convert.ToChar(posFixo[i]);
-                        if (operando2 == 0 && operador == '/')
-                        {
-                            txtResult.Text = "";
-                            lblPos.Text = "";
-                            txtResultado.Text = "";
-                            for (int j = 0; j <= qtd; j++)
-                            {
-                                pilhaElementos[j] = null;
-                                posFixo[j] = null;
-                                numeros[j] = "";
-                            }
-                            qtd = 0;
-                            MessageBox.Show("Divisão por 0 não pode ser realizada", "Divisão inválida", MessageBoxButtons.OK);
-                            return;
-                        }
-                        else
-                        {
-                            switch (operador)
-                            {
-                                case '+':
-                                    resultado = operando1 + operando2;
-                                    break;
-                                case '-':
-                                    resultado = operando1 - operando2;
-                                    break;
-                                case '*':
-                                    resultado = operando1 * operando2;
-                                    break;
-                                case '/':
-                                    resultado = operando1 / operando2;
-                                    break;
-                                case '^':
-                                    resultado = Math.Pow(operando1, operando2);
-                                    break;
-                            }
-                            result.Empilhar(Convert.ToString(resultado));
-                        }
-                    }
+                    if (eles[i].Prefe != 2)
+                        lblIn.Text += eles[i].Ele;
+                    lblPos.Text += a[i];
                 }
-
-                txtResult.Text = Convert.ToString(result.Ultimo.Info);
-                qtdParenteses1 = 0;
-                qtdParenteses2 = 0;
+                ex.Calcular(txtResult, lblPos, txtResultado, ref qtd);
             }
-               
-            
         }
+
+        
     }
 }
