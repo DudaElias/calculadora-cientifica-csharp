@@ -159,6 +159,7 @@ namespace Calculadora
             PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
             double resultado = 0;
             int k = 0;
+
                 for (int i = 0; i < qtdInfos; i++)
                 {
                     if (DecidirPreferencia(posFixo[i]) == 1)

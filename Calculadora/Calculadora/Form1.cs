@@ -16,9 +16,10 @@ namespace Calculadora
         {
             InitializeComponent();
         }
-        int qtd = 0;
-        
 
+        // INSTANCIA DE UM OBJETO EXPRESSÃO E OBJESTOS PARA O CONTROLE DE QUANTIDADE DE PARÊNTESES E DADOS
+
+        int qtd = 0;
         private Expressao ex = new Expressao();
         int qtdParenteses1 = 0;
         int qtdParenteses2 = 0;
@@ -29,8 +30,13 @@ namespace Calculadora
 
               
 
-                if ((sender as Button).Text == "CE" && qtd != 0)
+                if ((sender as Button).Text == "CE" && qtd != 0) // CASO O USUÁRIO DECIDA APAGAR O ÚLTIMO DADO DIGITADO
                 {
+
+                    if (txtResultado.Text.Substring(txtResultado.TextLength - 1, 1) == "(")
+                        qtdParenteses1--;
+                    if (txtResultado.Text.Substring(txtResultado.TextLength - 1, 1) == ")")
+                        qtdParenteses2--;
                     txtResultado.Text = txtResultado.Text.Remove(txtResultado.TextLength - 1);
                     ex[qtd] = null;
                     qtd--;
@@ -45,21 +51,25 @@ namespace Calculadora
                     btn8.Enabled = true;
                     btn9.Enabled = true;
                     btnAbre.Enabled = true;
-                    btnFecha.Enabled = true;
+                    btnFecha.Enabled = false;
                     btnDividir.Enabled = true;
                     btnElevado.Enabled = true;
                     btnMais.Enabled = true;
                     btnMenos.Enabled = true;
                     btnPonto.Enabled = true;
                 }
-                else if((sender as Button).Text == "C")
+                else if((sender as Button).Text == "C") // APAGAR TODA A EXPRESSÃO E RESETAR AS VARIÁVEIS DA INTÂNCIA EXPRESSÃO
                 {
                     txtResultado.Text = "";
-                    lblPos.Text = "";
+                    lblPos.Text = "Pósfixa: ";
                     for(int i = 0; i <= qtd; i++)
                     {
                         ex[i] = null;
                     }
+                    qtdParenteses1 = 0;
+                    qtdParenteses2 = 0;
+                    lblIn.Text = "Infixa: ";
+                    txtResult.Text = "";
                     qtd = 0;
                     btn0.Enabled = true;
                     btn1.Enabled = true;
@@ -84,102 +94,110 @@ namespace Calculadora
                     txtResultado.Text += (sender as Button).Text;
                     Elemento ele = new Elemento((sender as Button).Text, ex.DecidirPreferencia((sender as Button).Text));
 
-                if (txtResultado.Text != "")
-                {
-                    if (ele.Prefe > 2)
+                    if (txtResultado.Text != "")
                     {
-                        btnDividir.Enabled = false;
-                        btnElevado.Enabled = false;
-                        btnMais.Enabled = false;
-                        btnPonto.Enabled = false;
-
-                        btnAbre.Enabled = true;
-                        btnFecha.Enabled = true;
-                        btnVezes.Enabled = false;
-
-                    }
-                    else
-                    {
-                        if (ele.Ele != "(")
-                        {
-                            btnDividir.Enabled = true;
-                            btnElevado.Enabled = true;
-                            btnMais.Enabled = true;
-                            btnPonto.Enabled = true;
-                            btnVezes.Enabled = true;
-                        }
-                        else
+                        if (ele.Prefe > 2)
                         {
                             btnDividir.Enabled = false;
                             btnElevado.Enabled = false;
                             btnMais.Enabled = false;
                             btnPonto.Enabled = false;
+                            btnAbre.Enabled = true;
+                            btnFecha.Enabled = false;
                             btnVezes.Enabled = false;
+
                         }
+                        else
+                        {
+                            if (ele.Ele != "(")
+                            {
+                                btnDividir.Enabled = true;
+                                btnElevado.Enabled = true;
+                                btnMais.Enabled = true;
+                                btnPonto.Enabled = true;
+                                btnVezes.Enabled = true;
+                                btnFecha.Enabled = true;
+                            }
+                            else
+                            {
+                                btnDividir.Enabled = false;
+                                btnElevado.Enabled = false;
+                                btnMais.Enabled = false;
+                                btnPonto.Enabled = false;
+                                btnFecha.Enabled = true;
+                                btnVezes.Enabled = false;
+                            }
+                        }
+                    
+                    
                     }
-                    
-                    
-                }
-                else
-                {
-                    btnDividir.Enabled = false;
-                    btnElevado.Enabled = false;
-                    btnMais.Enabled = false;
-                    btnPonto.Enabled = false;
-                    btnVezes.Enabled = false;
-                    btnAbre.Enabled = true;
-                    btnFecha.Enabled = true;
-                }
-                if (ele.Ele == ")")
-                    qtdParenteses2++;
-                else if (ele.Ele == "(")
-                    qtdParenteses1++;
-
-
-                if (qtd != 0 && ex[qtd - 1].Prefe == 1 && ele.Prefe == 1)
-                {
-
-                    if (ex[qtd - 1].Prefe == 1 || ex[qtd - 1].Ele == "-")
-                        ex[qtd - 1].Ele += ele.Ele;
-                }
-                else if(qtd == 0 || ex[qtd - 1].Prefe != 1)
-                {
-                    if(ele.Prefe == 3)
-                        ele.Prefe = 1;
-                    ex[qtd] = ele;
-                    qtd++;
-                }
-                else
-                {
-                    ex[qtd] = ele;
-                    qtd++;
-                }
-                    if(qtd == 20)
+                    else
                     {
-                        MessageBox.Show("O máximo de dados da calculadora foi alcançado", "Máximo alcançado", MessageBoxButtons.OK);
-                        btn0.Enabled = false;
-                        btn1.Enabled = false;
-                        btn2.Enabled = false;
-                        btn3.Enabled = false;
-                        btn4.Enabled = false;
-                        btn5.Enabled = false;
-                        btn6.Enabled = false;
-                        btn7.Enabled = false;
-                        btn8.Enabled = false;
-                        btn9.Enabled = false;
-                        btnAbre.Enabled = false;
-                        btnFecha.Enabled = false;
-                        btnDividir.Enabled = true;
+                        btnDividir.Enabled = false;
                         btnElevado.Enabled = false;
                         btnMais.Enabled = false;
-                        btnMenos.Enabled = false;
                         btnPonto.Enabled = false;
-                        qtd--;
+                        btnVezes.Enabled = false;
+                        btnAbre.Enabled = true;
+                        btnFecha.Enabled = true;
                     }
-                    if (ex[qtd-1] != null && ex[qtd-1].Prefe == 1)
+                    if (ele.Ele == ")")
+                        qtdParenteses2++;
+                    else if (ele.Ele == "(")
+                        qtdParenteses1++;
+
+
+                    if (qtd != 0 && ex[qtd - 1].Prefe == 1 && ele.Prefe == 1)
                     {
-                        btnAbre.Enabled = false;
+                        if (ex[qtd - 1].Prefe == 1 || ex[qtd - 1].Ele == "-")
+                            ex[qtd - 1].Ele += ele.Ele;
                     }
+                    else if(qtd == 0 || ex[qtd - 1].Prefe != 1)
+                    {
+                        if(ele.Prefe == 3)
+                            ele.Prefe = 1;
+                        ex[qtd] = ele;
+                        qtd++;
+                    }
+                    else
+                    {
+                        if(ex[qtd - 1].Ele == "-"&&ex[qtd - 1].Prefe == 1 && ele.Ele == "(")
+                    {
+                        ex[qtd - 1].Prefe = 3;
+                    }
+                        ex[qtd] = ele;
+                        qtd++;
+                    }
+                        if(qtd == 20)
+                        {
+                            MessageBox.Show("O máximo de dados da calculadora foi alcançado", "Máximo alcançado", MessageBoxButtons.OK);
+                            btn0.Enabled = false;
+                            btn1.Enabled = false;
+                            btn2.Enabled = false;
+                            btn3.Enabled = false;
+                            btn4.Enabled = false;
+                            btn5.Enabled = false;
+                            btn6.Enabled = false;
+                            btn7.Enabled = false;
+                            btn8.Enabled = false;
+                            btn9.Enabled = false;
+                            btnAbre.Enabled = false;
+                            btnFecha.Enabled = false;
+                            btnDividir.Enabled = true;
+                            btnElevado.Enabled = false;
+                            btnMais.Enabled = false;
+                            btnMenos.Enabled = false;
+                            btnPonto.Enabled = false;
+                            qtd--;
+                        }
+                        if (ex[qtd-1] != null && ex[qtd-1].Prefe == 1 && ex[qtd - 1].Ele != "-")
+                        {
+                            btnAbre.Enabled = false;
+                        }
+                        else
+                        {
+                        btnAbre.Enabled = true;
+                        }
 
                 }
         }
@@ -193,6 +211,7 @@ namespace Calculadora
                 btnMais.Enabled = false;
                 btnVezes.Enabled = false;
                 btnPonto.Enabled = false;
+                btnFecha.Enabled = false;
             }
         }
 
