@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Maria Eduarda Elias Rocha - 18190
+//Guilherme Salim de Barros - 18188
 namespace Calculadora
 {
     class Expressao

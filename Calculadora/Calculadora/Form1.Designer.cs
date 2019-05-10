@@ -55,7 +55,6 @@
             this.txtResult = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblIn = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtResultado
@@ -411,18 +410,6 @@
             this.label3.TabIndex = 27;
             this.label3.Text = "Original:";
             // 
-            // lblIn
-            // 
-            this.lblIn.AutoSize = true;
-            this.lblIn.BackColor = System.Drawing.Color.Transparent;
-            this.lblIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblIn.Location = new System.Drawing.Point(43, 244);
-            this.lblIn.Name = "lblIn";
-            this.lblIn.Size = new System.Drawing.Size(74, 29);
-            this.lblIn.TabIndex = 28;
-            this.lblIn.Text = "Infixa:";
-            // 
             // frmCal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -430,7 +417,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(674, 863);
-            this.Controls.Add(this.lblIn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtResult);
@@ -495,7 +481,6 @@
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblIn;
     }
 }
 

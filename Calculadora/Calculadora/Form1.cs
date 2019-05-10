@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Maria Eduarda Elias Rocha - 18190
+//Guilherme Salim de Barros - 18188
 namespace Calculadora
 {
     public partial class frmCal : Form
@@ -68,7 +70,6 @@ namespace Calculadora
                     }
                     qtdParenteses1 = 0;
                     qtdParenteses2 = 0;
-                    lblIn.Text = "Infixa: ";
                     txtResult.Text = "";
                     qtd = 0;
                     btn0.Enabled = true;
@@ -225,9 +226,7 @@ namespace Calculadora
                 Elemento[] eles = ex.ConverterParaLetra(qtd);
                 string[] a = ex.ConverterParaPosFixa(ex.PilhaElementos, qtd);
                 for (int i = 0; i < qtd; i++)
-                {
-                    lblIn.Text += eles[i].Ele;
-                    lblPos.Text += a[i];
+                {                   lblPos.Text += a[i];
                 }
                 ex.Calcular(txtResult, lblPos, txtResultado, ref qtd);
             }

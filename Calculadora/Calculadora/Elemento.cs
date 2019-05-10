@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Maria Eduarda Elias Rocha - 18190
+//Guilherme Salim de Barros - 18188
 namespace Calculadora
 {
     class Elemento : IComparable<Elemento>
