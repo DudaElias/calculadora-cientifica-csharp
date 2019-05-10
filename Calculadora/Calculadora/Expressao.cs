@@ -16,7 +16,7 @@ namespace Calculadora
 
         public Elemento[] PilhaElementos { get => pilhaElementos; set => pilhaElementos = value; }
 
-        public Elemento this[int i]
+        public Elemento this[int i] // retorna o Elemento da posição i da pihaElementos
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Calculadora
 
         public string[] Numeros { get => numeros; set => numeros = value; }
         public string[] PosFixo { get => posFixo; set => posFixo = value; }
-        public PilhaHerdaLista<string> ElementosAEspera { get => elementosAEspera; set => elementosAEspera = value; }
+        public PilhaHerdaLista<string> ElementosAEspera { get => elementosAEspera; set => elementosAEspera = value; } // pilha com os operadores a espera para adicionar na posfixa
 
         public Expressao()
         {
@@ -67,7 +67,6 @@ namespace Calculadora
 
             try
             {
-                //double eDouble = Convert.ToDouble(e);
                 return 1;
             }
             catch
@@ -87,8 +86,8 @@ namespace Calculadora
             {
                 if (pilhaElementos[i].Prefe == 1)
                 {
-                    numeros[letra] = pilhaElementos[i].Ele;
-                    pilhaElementos[i].Ele = ((char)(indice + letra)).ToString();
+                    numeros[letra] = pilhaElementos[i].Ele; // coloca em um vetor os números da expressão
+                    pilhaElementos[i].Ele = ((char)(indice + letra)).ToString(); // coloca letras no lugar de numeros da expressão
                     letra++;
                 }
 
@@ -103,29 +102,29 @@ namespace Calculadora
             for (i = 0; i < qtdInfos; i++)
             {
 
-                if (e[i].Prefe == 1)
+                if (e[i].Prefe == 1) // verifica se é número
                 {
                     posFixo[j] = e[i].Ele;
                     j++;
                 }
 
-                else if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                else if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo()))) 
                 {
-                    while (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))
+                    while (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))// enquanto o topo dos elementos a espera for maior ou igual a e[i]
                     {
-                        if (e[i].Prefe != 2)
+                        if (e[i].Prefe != 2) // caso não seja parenteses
                         {
                             posFixo[j] = elementosAEspera.Desempilhar();
                             j++;
                         }
-                        else if (e[i].Ele == "(")
+                        else if (e[i].Ele == "(") // caso seja abre 
                         {
                             elementosAEspera.Empilhar(e[i].Ele);
                             break;
                         }
                         else
                         {
-                            while (elementosAEspera.OTopo() != "(")
+                            while (elementosAEspera.OTopo() != "(")// enquanto o topo for diferente de abre parenteses
                             {
                                 posFixo[j] = elementosAEspera.Desempilhar();
                                 j++;
@@ -156,18 +155,18 @@ namespace Calculadora
 
         public void Calcular(TextBox txtResult, Label lblPos, TextBox txtResultado, ref int qtdInfos)
         {
-            PilhaHerdaLista<string> result = new PilhaHerdaLista<string>();
+            PilhaHerdaLista<string> result = new PilhaHerdaLista<string>(); // instancia uma pilha local para colocar resultados
             double resultado = 0;
             int k = 0;
 
                 for (int i = 0; i < qtdInfos; i++)
                 {
-                    if (DecidirPreferencia(posFixo[i]) == 1)
+                    if (DecidirPreferencia(posFixo[i]) == 1) // se for número
                     {
                         result.Empilhar(numeros[k]);
                         k++;
                     }
-                    else
+                    else if(result.QuantosNos != 1) 
                     {
                         double operando2 = double.Parse(result.OTopo());
                         result.Desempilhar();
@@ -212,9 +211,15 @@ namespace Calculadora
                             result.Empilhar(Convert.ToString(resultado));
                         }
                     }
+                    else
+                    {
+                        if (posFixo[i] == "-" && result.Ultimo.Info.Substring(0, 1) != "-") // caso seja um menos como último elemento da posfixa e não exista mais de um número e nem o primeiro char do resultado seja menos
+                            result.Ultimo.Info = "-" + result.Ultimo.Info;
+                        else
+                            result.Ultimo.Info = result.Ultimo.Info.Remove(0, 1);
+                    }
                 }
-
-                txtResult.Text = Convert.ToString(result.Ultimo.Info);
+                txtResult.Text = Convert.ToString(result.Ultimo.Info); // exibe no txt passado, o resultado
         }
 
 
