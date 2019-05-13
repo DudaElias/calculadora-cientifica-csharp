@@ -112,7 +112,7 @@ namespace Calculadora
 
                 else if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo()))) 
                 {
-                    while (!elementosAEspera.EstaVazia() && e[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))// enquanto o topo dos elementos a espera for maior ou igual a e[i]
+                    while (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))// enquanto o topo dos elementos a espera for maior ou igual a e[i]
                     {
                         if (e[i].Prefe != 2) // caso não seja parenteses
                         {
