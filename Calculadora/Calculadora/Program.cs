@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Calculadora
 {
+
     static class Program
     {
         /// <summary>

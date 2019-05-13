@@ -9,7 +9,7 @@ using System.Windows.Forms;
 //Guilherme Salim de Barros - 18188
 namespace Calculadora
 {
-    class Expressao
+   public class Expressao
     {
         private Elemento[] pilhaElementos;
         private string[] numeros;
@@ -89,7 +89,7 @@ namespace Calculadora
                 if (pilhaElementos[i].Prefe == 1)
                 {
                     numeros[letra] = pilhaElementos[i].Ele; // coloca em um vetor os números da expressão
-                    pilhaElementos[i].Ele = ((char)(indice + letra)).ToString(); // coloca letras no lugar de numeros da expressão
+                    pilhaElementos[i].Ele = ((indice + letra)).ToString(); // coloca letras no lugar de numeros da expressão
                     letra++;
                 }
 

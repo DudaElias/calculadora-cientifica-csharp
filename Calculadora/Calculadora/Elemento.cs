@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 //Guilherme Salim de Barros - 18188
 namespace Calculadora
 {
-    class Elemento : IComparable<Elemento>
+    public class Elemento : IComparable<Elemento>
     {
         private string ele;
         private int prefe;
