@@ -89,7 +89,7 @@ namespace Calculadora
                 if (pilhaElementos[i].Prefe == 1)
                 {
                     numeros[letra] = pilhaElementos[i].Ele; // coloca em um vetor os números da expressão
-                    pilhaElementos[i].Ele = ((indice + letra)).ToString(); // coloca letras no lugar de numeros da expressão
+                    pilhaElementos[i].Ele = ((char)(indice + letra)).ToString(); // coloca letras no lugar de numeros da expressão
                     letra++;
                 }
 
@@ -112,7 +112,7 @@ namespace Calculadora
 
                 else if (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo()))) 
                 {
-                    while (!elementosAEspera.EstaVazia() && e[i].Prefe <= DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))// enquanto o topo dos elementos a espera for maior ou igual a e[i]
+                    while (!elementosAEspera.EstaVazia() && e[i].Prefe < DecidirPreferencia(Convert.ToString(elementosAEspera.OTopo())))// enquanto o topo dos elementos a espera for maior ou igual a e[i]
                     {
                         if (e[i].Prefe != 2) // caso não seja parenteses
                         {
